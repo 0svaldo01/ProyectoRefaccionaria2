@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using ProyectoRefaccionaria2.Views.MarcasViews;
+using System.Windows.Controls;
+
+//se agrega un using para tener acceso a las views de marcas
 
 namespace ProyectoRefaccionaria2.ViewModels
 {
@@ -20,7 +24,12 @@ namespace ProyectoRefaccionaria2.ViewModels
         MarcasCatalogo catalogomarcas = new MarcasCatalogo();
         public ObservableCollection<Productos> ListaProductos { get; set; } 
         public ObservableCollection<Marcas> ListaMarcas { get; set; }
-        public string Vista;
+
+        // se hace una propiedad para mandar a llamar las vistas
+        public string Vista { get; set; }
+
+        //se manda a llamar la clase de models para poder darle uso en los metodos de marcas
+        public Marcas?Marcas { get; set; }
 
         #region commands
         public ICommand VerMarcasCommand { get; set; }
@@ -39,11 +48,11 @@ namespace ProyectoRefaccionaria2.ViewModels
             VerMarcasCommand = new RelayCommand(VerMarcas);
             VerAgregarMarcasCommand = new RelayCommand(VerAgregarMarcas);
             AgregarMarcasCommand = new RelayCommand(AgregarMarcas);
-            VerEditarMarcasCommand = new RelayCommand(VerEditarMarcas);
-            EditarMarcasCommand = new RelayCommand(EditarMarcas);
+            VerEditarMarcasCommand = new RelayCommand<Marcas>(VerEditarMarcas);
+            EditarMarcasCommand = new RelayCommand<Marcas>(EditarMarcas);
             VerEliminarMarcasCommand = new RelayCommand(VerEliminarMarcas);
-            AgregarMarcasCommand = new RelayCommand(EliminarMarcas);
-            RegresarCommand = new RelayCommand(Regresar);
+            AgregarMarcasCommand = new RelayCommand<Marcas>(EliminarMarcas);
+            RegresarCommand = new RelayCommand<Marcas>(Regresar);
 
             //Se actualiza primero la base de datos para que se 
             //muestren los cambios y luego ya actualizas para que se vean los cambios ¿no?
@@ -66,32 +75,71 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void AgregarMarcas()
         {
-            throw new NotImplementedException();
+            if(Marcas != null)
+            {
+                if (Marcas.IdMarca != 0)
+                {
+                    catalogomarcas.Update(Marcas);
+                }
+                else
+                {
+                    catalogomarcas.Create(Marcas);
+                }
+                
+            }
+            ActualizarBD();
+            Vista = "Ver";
+            Actualizar();
         }
 
-        private void VerEditarMarcas()
+        private void VerEditarMarcas(Marcas m)
         {
-            throw new NotImplementedException();
+           if(m != null)
+            {
+                catalogomarcas.Update(m);
+                ActualizarBD();
+                Vista = "Editar";
+                Actualizar();
+            }
         }
 
-        private void EditarMarcas()
+        private void EditarMarcas(Marcas m)
         {
-            throw new NotImplementedException();
+            Marcas = m;
+            Vista = "Editar";
+            Actualizar();
         }
 
         private void VerEliminarMarcas()
         {
-            throw new NotImplementedException();
+            if(Marcas != null)
+            {
+                catalogomarcas.Delete(Marcas);
+                ActualizarBD() ;
+                Vista = "Ver";
+                Actualizar();
+            }
         }
 
-        private void EliminarMarcas()
+       // se manda a llamar el model en el metodo, si es diferente a nulo, 
+       //abre la vista de eliminar, al eliminar se actualiza la base de datos
+        private void EliminarMarcas(Marcas m)
         {
-            throw new NotImplementedException();
+            if(m !=null)
+            {
+                Marcas = m;
+                Vista = "Eliminar";
+                ActualizarBD();
+            }
         }
 
-        private void Regresar()
+        //metodo para regresar/cancelar la accion en la vista
+        //y regrese a la vista anterior
+        private void Regresar(Marcas m)
         {
-            throw new NotImplementedException();
+            Marcas = m;
+            Vista = "Regresar";
+            Actualizar();
         }
 
         //Actualizar la base de datos para que se vean los cambios en la lista
