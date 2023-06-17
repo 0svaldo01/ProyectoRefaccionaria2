@@ -16,6 +16,7 @@
                             <TextBlock Width="400" FontSize="16"><Run Text="{Binding Descripcion}"></Run></TextBlock>
                             <TextBlock Width="400" FontSize="16"><Run Text="{Binding Nombre}"></Run></TextBlock>
                             <TextBlock Width="400" FontSize="16"><Run Text="{Binding Precio}"></Run></TextBlock>
+                            <TextBlock Width="400" FontSize="16"><Run Text="{Binding IdMarcaPNavigation.Nombre}"></Run></TextBlock>
                         </StackPanel>
                     </Border>
                 </DataTemplate>

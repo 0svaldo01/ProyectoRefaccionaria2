@@ -20,7 +20,7 @@
             <vistasProductos:VerProductosView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:MarcasViewModel}">
-            <vistasMarcas:VerMarcasView/>
+            <vistasMarcas:IndexMarcas/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:UsuariosViewModel}">
             <vistasUsuarios:VerUsuariosView/>

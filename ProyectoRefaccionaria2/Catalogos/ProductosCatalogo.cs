@@ -14,7 +14,7 @@ namespace ProyectoRefaccionaria2.Catalogos
 
         public IEnumerable<Productos> GetAllProductos() 
         {
-            return context.Productos.OrderBy(x => x.Nombre);
+            return context.Productos.OrderBy(x => x.Nombre).Include(x=>x.IdMarcaPNavigation);
         }
 
         public void Create(Productos p)

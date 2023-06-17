@@ -65,12 +65,13 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void VerMarcas()
         {
-            throw new NotImplementedException();
+            Vista = "VerAgregarMarcas";
         }
 
         private void VerAgregarMarcas()
         {
-            Vista = "AgregarMarcas";
+            Vista = "VerAgregarMarcas";
+            Actualizar();
         }
 
         private void AgregarMarcas()
