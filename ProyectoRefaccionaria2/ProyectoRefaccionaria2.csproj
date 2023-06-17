@@ -8,16 +8,43 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Asetts\AgregarMarca.png" />
+    <None Remove="Asetts\AgregarUsuario.png" />
+    <None Remove="Asetts\EliminarMarcaPub.jpg" />
+    <None Remove="Asetts\EliminarProductoFondo.jpg" />
+    <None Remove="Asetts\EliminarProductoPub.jpg" />
+    <None Remove="Asetts\EliminarUsuario.png" />
+    <None Remove="Asetts\FondoAgregar.jpg" />
+    <None Remove="Asetts\Marca.png" />
+    <None Remove="Asetts\notas.png" />
+    <None Remove="Asetts\Productos.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="Views\MarcasViews\" />
+    <Folder Include="Views\ProductosViews\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Asetts\AgregarMarca.png" />
+    <Resource Include="Asetts\AgregarUsuario.png" />
+    <Resource Include="Asetts\EliminarMarcaPub.jpg" />
+    <Resource Include="Asetts\EliminarProductoFondo.jpg" />
+    <Resource Include="Asetts\EliminarProductoPub.jpg" />
+    <Resource Include="Asetts\EliminarUsuario.png" />
+    <Resource Include="Asetts\FondoAgregar.jpg" />
+    <Resource Include="Asetts\Marca.png" />
+    <Resource Include="Asetts\notas.png" />
+    <Resource Include="Asetts\Productos.png" />
   </ItemGroup>
 
 </Project>
