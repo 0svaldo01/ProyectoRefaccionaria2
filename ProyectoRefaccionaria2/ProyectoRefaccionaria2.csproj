@@ -8,16 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Asetts\AgregarMarca.png" />
-    <None Remove="Asetts\AgregarUsuario.png" />
-    <None Remove="Asetts\EliminarMarcaPub.jpg" />
-    <None Remove="Asetts\EliminarProductoFondo.jpg" />
-    <None Remove="Asetts\EliminarProductoPub.jpg" />
-    <None Remove="Asetts\EliminarUsuario.png" />
-    <None Remove="Asetts\FondoAgregar.jpg" />
-    <None Remove="Asetts\Marca.png" />
-    <None Remove="Asetts\notas.png" />
-    <None Remove="Asetts\Productos.png" />
+    <None Remove="Assets\AgregarMarca.png" />
+    <None Remove="Assets\AgregarUsuario.png" />
+    <None Remove="Assets\EliminarMarcaPub.jpg" />
+    <None Remove="Assets\EliminarProductoFondo.jpg" />
+    <None Remove="Assets\EliminarProductoPub.jpg" />
+    <None Remove="Assets\EliminarUsuario.png" />
+    <None Remove="Assets\FondoAgregar.jpg" />
+    <None Remove="Assets\Marca.png" />
+    <None Remove="Assets\notas.png" />
+    <None Remove="Assets\Productos.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,21 +30,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\MarcasViews\" />
-    <Folder Include="Views\ProductosViews\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Asetts\AgregarMarca.png" />
-    <Resource Include="Asetts\AgregarUsuario.png" />
-    <Resource Include="Asetts\EliminarMarcaPub.jpg" />
-    <Resource Include="Asetts\EliminarProductoFondo.jpg" />
-    <Resource Include="Asetts\EliminarProductoPub.jpg" />
-    <Resource Include="Asetts\EliminarUsuario.png" />
-    <Resource Include="Asetts\FondoAgregar.jpg" />
-    <Resource Include="Asetts\Marca.png" />
-    <Resource Include="Asetts\notas.png" />
-    <Resource Include="Asetts\Productos.png" />
+    <Resource Include="Assets\AgregarMarca.png" />
+    <Resource Include="Assets\AgregarUsuario.png" />
+    <Resource Include="Assets\EliminarMarcaPub.jpg" />
+    <Resource Include="Assets\EliminarProductoFondo.jpg" />
+    <Resource Include="Assets\EliminarProductoPub.jpg" />
+    <Resource Include="Assets\EliminarUsuario.png" />
+    <Resource Include="Assets\FondoAgregar.jpg" />
+    <Resource Include="Assets\Marca.png" />
+    <Resource Include="Assets\notas.png" />
+    <Resource Include="Assets\Productos.png" />
   </ItemGroup>
 
 </Project>

@@ -7,9 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Margin="30" Background="#e3dddd">
-        <TextBlock Margin="40,0,0,50"
+        <!--Modifique el textblock para que estuviera centrada la leyenda "Iniciar Sesión"-->
+        <TextBlock Margin="0,0,0,50"
                    FontSize="40"
-                   HorizontalAlignment="Stretch"
+                   HorizontalAlignment="Center"
                    FontWeight="Bold" FontStyle="Italic" >
             Iniciar sesión</TextBlock>
         <Label>Correo electrónico:</Label>
