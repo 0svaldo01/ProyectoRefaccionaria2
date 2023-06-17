@@ -23,7 +23,7 @@ namespace ProyectoRefaccionaria2.ViewModels
         #endregion
         MarcasCatalogo catalogomarcas = new MarcasCatalogo();
         public ObservableCollection<Productos> ListaProductos { get; set; } 
-        public ObservableCollection<Marcas> ListaMarcas { get; set; }
+        public ObservableCollection<Marcas> ListaMarcas { get; set; } = new ObservableCollection<Marcas>();
 
         // se hace una propiedad para mandar a llamar las vistas
         public string Vista { get; set; }

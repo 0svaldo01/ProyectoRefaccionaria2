@@ -26,9 +26,10 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <PasswordBox Name="pwb1" 
-                     LostFocus="pwb1_LostFocus">
-        </PasswordBox>
+        <PasswordBox Name="pwb1"/>
+        <!--<PasswordBox Name="pwb1" 
+                     LostFocus="pwb1_LostFocus">-->
+
         <TextBlock Margin="10"
                    Text="{Binding Error}"
                    Foreground="Red" 

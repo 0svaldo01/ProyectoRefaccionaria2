@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
-        <ListBox Background="#e3dddd" DockPanel.Dock="Top" ItemsSource="{Binding ListaMarca}"
-                                      SelectedItem="{Binding Marca}">
+        <ListBox Background="#e3dddd" DockPanel.Dock="Top" ItemsSource="{Binding ListaMarcas}"
+                                      SelectedItem="{Binding Marcas}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border CornerRadius="10" BorderBrush="#e05206" Padding="10" Margin="5" Background="#F5F5DC">

@@ -20,7 +20,7 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         ProductosCatalogo catalogoproductos = new ProductosCatalogo();
        
-        public ObservableCollection<Productos> ListaProductos { get; set; }
+        public ObservableCollection<Productos> ListaProductos { get; set; } = new ObservableCollection<Productos>();
         public ObservableCollection<Marcas> ListaMarcas { get; set; }
         public string Vista;
 

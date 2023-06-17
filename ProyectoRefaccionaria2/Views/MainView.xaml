@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoRefaccionaria2.Views"
+        xmlns:vistasProductos="clr-namespace:ProyectoRefaccionaria2.Views.ProductosViews"
+        xmlns:vistasMarcas="clr-namespace:ProyectoRefaccionaria2.Views.MarcasViews"
         xmlns:vm="clr-namespace:ProyectoRefaccionaria2.ViewModels"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
@@ -12,7 +14,24 @@
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:ProductosViewModel}">
+            <vistasProductos:VerProductosView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MarcasViewModel}">
+            <vistasMarcas:VerMarcasView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:UsuariosViewModel}">
+            
+        </DataTemplate>
+    </Window.Resources>
+
+    <DockPanel>
+        <StackPanel>
+            <Button Content="Marcas" Command="{Binding NavegarMarcasCommand}"/>
+            <Button Content="Productos"/>
+            <Button Content="Usuarios"/>
+        </StackPanel>
+        <ContentControl Content="{Binding ViewModelActual}"/>
+    </DockPanel>
 </Window>
