@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ProyectoRefaccionaria2.Views"
         xmlns:vistasProductos="clr-namespace:ProyectoRefaccionaria2.Views.ProductosViews"
         xmlns:vistasMarcas="clr-namespace:ProyectoRefaccionaria2.Views.MarcasViews"
+        xmlns:vistasUsuarios="clr-namespace:ProyectoRefaccionaria2.Views.UsuariosViews"
         xmlns:vm="clr-namespace:ProyectoRefaccionaria2.ViewModels"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
@@ -22,7 +23,7 @@
             <vistasMarcas:VerMarcasView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:UsuariosViewModel}">
-            
+            <vistasUsuarios:VerUsuariosView/>
         </DataTemplate>
     </Window.Resources>
 
@@ -30,7 +31,7 @@
         <StackPanel>
             <Button Content="Marcas" Command="{Binding NavegarMarcasCommand}"/>
             <Button Content="Productos" Command="{Binding NavegarProductosCommand}"/>
-            <Button Content="Usuarios"/>
+            <Button Content="Usuarios" Command="{Binding NavegarUsuariosCommand}"/>
         </StackPanel>
         <ContentControl Content="{Binding ViewModelActual}"/>
     </DockPanel>
