@@ -14,10 +14,18 @@ namespace ProyectoRefaccionaria2.ViewModels
         public object ViewModelActual { get; set; } = new ProductosViewModel();
 
         public ICommand NavegarMarcasCommand { get; set; }
+        public ICommand NavegarProductosCommand { get; set; }
 
         public MainViewModel()
         {
-            NavegarMarcasCommand = new RelayCommand(NavegarMarcas);    
+            NavegarMarcasCommand = new RelayCommand(NavegarMarcas);
+            NavegarProductosCommand = new RelayCommand(NavegarProductos);
+        }
+
+        private void NavegarProductos()
+        {
+            ViewModelActual = new ProductosViewModel();
+            Actualizar(nameof(ViewModelActual));
         }
 
         private void NavegarMarcas()

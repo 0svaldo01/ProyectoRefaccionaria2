@@ -29,7 +29,7 @@
     <DockPanel>
         <StackPanel>
             <Button Content="Marcas" Command="{Binding NavegarMarcasCommand}"/>
-            <Button Content="Productos"/>
+            <Button Content="Productos" Command="{Binding NavegarProductosCommand}"/>
             <Button Content="Usuarios"/>
         </StackPanel>
         <ContentControl Content="{Binding ViewModelActual}"/>
