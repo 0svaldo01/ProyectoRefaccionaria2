@@ -6,14 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ProyectoRefaccionaria2.Catalogos;
+using ProyectoRefaccionaria2.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoRefaccionaria2.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        RefaccionariaContext context = new RefaccionariaContext();
         public object ViewModelActual { get; set; } = new ProductosViewModel();
-
         public string IsLogged { get; set; }
+        public Usuarios? usuario { get; set; } = new();
+        public string Error { get; set; }
 
         public ICommand NavegarMarcasCommand { get; set; }
         public ICommand NavegarProductosCommand { get; set; }
@@ -30,8 +35,27 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void IniciarSesion()
         {
-            IsLogged = "VerGeneral";
+            string query = $"select fnIniciarSesion('{usuario.Correo}','{usuario.Contraseña}');";
+            var result = 
+             context
+            .Database.SqlQueryRaw<int>(query, usuario.Correo,usuario.Contraseña!).ToList().FirstOrDefault();
+            if (result == 1)
+            {
+                IsLogged = "VerGeneral";
+            }
+            if (result == 2) 
+            {
+                Error = "Usuario Incorrecto";
+            }
+            else 
+            {
+                Error = "Contraseña Incorrecta";
+            }
             Actualizar();
+        }
+        private void CerrarSesion() 
+        {
+            IsLogged = "VerLoggin";
         }
 
         private void NavegarUsuarios()

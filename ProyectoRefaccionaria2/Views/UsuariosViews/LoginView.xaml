@@ -14,7 +14,7 @@
                    FontWeight="Bold" FontStyle="Italic" >
             Iniciar sesión</TextBlock>
         <Label>Correo electrónico:</Label>
-        <TextBox Text="{Binding Usuario.Correo}">
+        <TextBox Text="{Binding usuario.Correo}">
         </TextBox>
         <Label>Contraseña:</Label>
         <TextBox Visibility="Collapsed"
@@ -26,7 +26,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <PasswordBox Name="pwb1"/>
+        <TextBox Text="{Binding usuario.Contraseña}"  Name="pwb1"/>
         <!--<PasswordBox Name="pwb1" 
                      LostFocus="pwb1_LostFocus">-->
 
