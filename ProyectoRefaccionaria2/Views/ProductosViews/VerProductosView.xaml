@@ -11,16 +11,25 @@
             <Button  Command="{Binding VerAgregarProductosCommand}">Agregar</Button>
         </WrapPanel>
         <ListBox Background="#e3dddd" DockPanel.Dock="Top" ItemsSource="{Binding ListaProductos}"
-                                      SelectedItem="{Binding Productos}">
+                                      SelectedItem="{Binding Producto}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border CornerRadius="10" BorderBrush="#e05206" Padding="10" Margin="5" Background="#F5F5DC">
-                        <StackPanel >
-                            <TextBlock Width="400" FontSize="16"><Run Text="{Binding Descripcion}"></Run></TextBlock>
-                            <TextBlock Width="400" FontSize="16"><Run Text="{Binding Nombre}"></Run></TextBlock>
-                            <TextBlock Width="400" FontSize="16"><Run Text="{Binding Precio}"></Run></TextBlock>
-                            <TextBlock Width="400" FontSize="16"><Run Text="{Binding IdMarcaPNavigation.Nombre}"></Run></TextBlock>
-                        </StackPanel>
+                        <DockPanel>
+                            <StackPanel >
+                                <TextBlock Width="400" FontSize="16"><Run Text="{Binding Descripcion}"></Run></TextBlock>
+                                <TextBlock Width="400" FontSize="16"><Run Text="{Binding Nombre}"></Run></TextBlock>
+                                <TextBlock Width="400" FontSize="16"><Run Text="{Binding Precio}"></Run></TextBlock>
+                                <TextBlock Width="400" FontSize="16"><Run Text="{Binding IdMarcaPNavigation.Nombre}"></Run></TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <Button Content="Eliminar" Command="{Binding Path=DataContext.VerEliminarProductosCommand,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
+                                
+                                <Button Content="Editar" Command="{Binding Path=DataContext.EditarProductoCommand, 
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
+                            </StackPanel>
+                        </DockPanel>
                     </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

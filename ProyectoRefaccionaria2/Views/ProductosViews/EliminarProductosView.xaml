@@ -30,12 +30,11 @@
                            ><Run Text="¿Desea eliminar este producto:"></Run>
                     <!--aqui hay que modificar para que salga 
                   el nombre del producto, seria en el run de abajo creo-->
-                <Run Text="{Binding venta.NombreComprador}">
+                <Run Text="{Binding Producto.Nombre}">
                <!--hay que ver que onda aqui para ingresar el nombre del producto-->
                 </Run>
                     <Run Text=" "></Run>
-                <Run Text="{Binding venta.IdAutoNavigation.Marca}"></Run>
-                    <Run Text="{Binding venta.IdAutoNavigation.Modelo}"></Run>
+                <Run Text="{Binding Producto.IdMarcaPNavigation.Nombre}"></Run>
                     <Run Text="?"></Run>
                 </TextBlock>
 
@@ -45,7 +44,7 @@
                     <Border Margin="0,0,30,0" Background="#e05206" Height="40" CornerRadius="10" Width="110"
                             
                             >
-                        <Button Background="Transparent" Command="{Binding EliminarVentaCommand}" 
+                        <Button Background="Transparent" Command="{Binding EliminarProductosCommand}" 
                                 
                                 Foreground="White" FontSize="15" BorderThickness="0" FontWeight="Bold">Sí</Button>
                     </Border>

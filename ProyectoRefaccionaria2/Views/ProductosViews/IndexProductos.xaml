@@ -10,7 +10,6 @@
         <ContentControl.Resources>
             <local:VerProductosView x:Key="VerProductosView"/>
             <local:AgregarProductosView x:Key="AgregarProductosView"/>
-            <local:EditarProductosView x:Key="EditarProductosView"/>
             <local:EliminarProductosView x:Key="EliminarProductosView"/>
         </ContentControl.Resources>
         <ContentControl.Style>
@@ -23,7 +22,7 @@
                         <Setter Property="Content" Value="{StaticResource AgregarProductosView}"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Vista}" Value="VerEditarProductos">
-                        <Setter Property="Content" Value="{StaticResource EditarProductosView}"/>
+                        <Setter Property="Content" Value="{StaticResource AgregarProductosView}"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Vista}" Value="VerEliminarProductos">
                         <Setter Property="Content" Value="{StaticResource EliminarProductosView}"/>

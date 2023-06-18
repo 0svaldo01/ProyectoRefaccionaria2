@@ -34,5 +34,14 @@ namespace ProyectoRefaccionaria2.Catalogos
             context.SaveChanges();
         }
 
+        internal IEnumerable<Marcas> GetAllMarcas()
+        {
+            return context.Marcas.OrderBy(x => x.Nombre);
+        }
+
+        internal void Reload(Productos? producto)
+        {
+            context.Entry(producto).Reload();
+        }
     }
 }

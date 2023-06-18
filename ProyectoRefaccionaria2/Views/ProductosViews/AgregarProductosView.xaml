@@ -22,7 +22,7 @@
                 </StackPanel.Resources>
 
                 <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Nombre:</TextBlock>
-                <TextBox Text="{Binding venta.NombreComprador}" >
+                <TextBox Text="{Binding Producto.Nombre}" >
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -32,7 +32,7 @@
 
 
                 <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Precio:</TextBlock>
-                <TextBox Text="{Binding venta.Telefono}">
+                <TextBox Text="{Binding Producto.Precio}">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -40,7 +40,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Descripcion:</TextBlock>
-                <TextBox Text="{Binding venta.Ocupacion}"  BorderThickness="1" >
+                <TextBox Text="{Binding Producto.Descripcion}"  BorderThickness="1" >
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -54,17 +54,14 @@
                 <!--PENDIENTE DE REVISAR-->
                 <!--aqui podriamos poner un combo box enlazado a las marcas ya registradas o podriamos que el usuario las eliga-->
 
-                <ComboBox ItemsSource="{Binding ListaAutos}"
-                          SelectedItem="{Binding auto}"
-                          SelectedValue="{Binding venta.IdAuto}"
-                          DisplayMemberPath="Modelo"
-                          SelectedValuePath="Idventa">
-                </ComboBox>
+                <ComboBox ItemsSource="{Binding ListaMarcas}" SelectedValue="{Binding Producto.IdMarcaP}" DisplayMemberPath="Nombre"
+                      SelectedValuePath="IdMarca"/>
+
 
                 <WrapPanel Margin="0,60,0,0" HorizontalAlignment="Center" >
                     <Border Margin="0,0,30,0" Background="#e05206" Height="40" CornerRadius="10" Width="100">
                         <Button Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold" Height="30" VerticalAlignment="Center"
-                                Command="{Binding RegistrarVentaCommand}"
+                                Command="{Binding AgregarProductoCommand}"
                                 >Agregar</Button>
                     </Border>
                     <Border Margin="0,0,30,0" Background="#e01010" Height="40" CornerRadius="10" Width="100">

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using ProyectoRefaccionaria2.Catalogos;
+using ProyectoRefaccionaria2.Helpers;
 using ProyectoRefaccionaria2.Models;
 using System;
 using System.Collections.Generic;
@@ -21,15 +22,19 @@ namespace ProyectoRefaccionaria2.ViewModels
         ProductosCatalogo catalogoproductos = new ProductosCatalogo();
        
         public ObservableCollection<Productos> ListaProductos { get; set; } = new ObservableCollection<Productos>();
-        public ObservableCollection<Marcas> ListaMarcas { get; set; }
+        public ObservableCollection<Marcas> ListaMarcas { get; set; } = new ObservableCollection<Marcas>();
+        public Productos? Producto { get; set; } = new Productos();
+
+        private ValidarProducto Validador = new ValidarProducto();
+        public string Error { get; set; }
         public string Vista { get; set; }
 
         #region commands
         public ICommand VerProductosCommand { get; set; }
         public ICommand VerAgregarProductosCommand { get; set; }
-        public ICommand AgregarProductosCommand { get; set; }
+        public ICommand AgregarProductoCommand { get; set; }
         public ICommand VerEditarProductosCommand { get; set; }
-        public ICommand EditarProductosCommand { get; set; }
+        public ICommand EditarProductoCommand { get; set; }
         public ICommand VerEliminarProductosCommand { get; set; }
         public ICommand EliminarProductosCommand { get; set; }
         public ICommand RegresarCommand { get; set; }
@@ -38,17 +43,39 @@ namespace ProyectoRefaccionaria2.ViewModels
         {
             VerProductosCommand = new RelayCommand(VerProductos);
             VerAgregarProductosCommand = new RelayCommand(VerAgregarProductos);
-            AgregarProductosCommand = new RelayCommand(AgregarProductos);
             VerEditarProductosCommand = new RelayCommand(VerEditarProductos);
-            EditarProductosCommand = new RelayCommand(EditarProductos);
-            VerEliminarProductosCommand = new RelayCommand(VerEliminarProductos);
-            AgregarProductosCommand = new RelayCommand(EliminarProductos);
+            EditarProductoCommand = new RelayCommand<Productos>(EditarProductos);
+            VerEliminarProductosCommand = new RelayCommand<Productos>(VerEliminarProductos);
+            EliminarProductosCommand = new RelayCommand(EliminarProductos);
+            AgregarProductoCommand = new RelayCommand(AgregarProducto);
             RegresarCommand = new RelayCommand(Regresar);
 
             //Se actualiza primero la base de datos para que se 
             //muestren los cambios y luego ya actualizas para que se vean los cambios ¿no?
             ActualizarBD();
-            Actualizar();
+        }
+
+        private void AgregarProducto()
+        {
+            var resultado = Validador.Validar(Producto);
+
+            if (resultado == string.Empty)
+            {
+                if (Vista == "VerEditarProductos")
+                {
+                    catalogoproductos.Update(Producto);  
+                }
+                else if (Vista == "VerAgregarProductos")
+                {
+                    catalogoproductos.Create(Producto);
+                }
+                ActualizarBD();
+            }
+            else
+            {
+                Error = resultado;
+                Actualizar();
+            }
         }
 
         private void VerProductos()
@@ -72,24 +99,32 @@ namespace ProyectoRefaccionaria2.ViewModels
             throw new NotImplementedException();
         }
 
-        private void EditarProductos()
+        private void EditarProductos(Productos producto)
         {
-            throw new NotImplementedException();
+            Producto = producto;
+            Vista = "VerEditarProductos";
+            Actualizar();
         }
 
-        private void VerEliminarProductos()
+        private void VerEliminarProductos(Productos producto)
         {
-            throw new NotImplementedException();
+            Producto = producto;
+            Vista = "VerEliminarProductos";
+            Actualizar();
+
         }
 
         private void EliminarProductos()
         {
-            throw new NotImplementedException();
+            catalogoproductos.Delete(Producto);
+            ActualizarBD();
         }
 
         private void Regresar()
         {
-          
+            Vista = "VerProductos";
+            catalogoproductos.Reload(Producto);
+            Actualizar();
         }
 
         //Actualizar la base de datos para que se vean los cambios en la lista
@@ -97,9 +132,14 @@ namespace ProyectoRefaccionaria2.ViewModels
         private void ActualizarBD()
         {
             ListaProductos.Clear();
+            ListaMarcas.Clear();
             foreach (var item in catalogoproductos.GetAllProductos())
             {
                 ListaProductos.Add(item);
+            }
+            foreach (var item in catalogoproductos.GetAllMarcas())
+            {
+                ListaMarcas.Add(item);
             }
             Actualizar();
         }

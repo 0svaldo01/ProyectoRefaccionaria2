@@ -23,6 +23,7 @@ namespace ProyectoRefaccionaria2.ViewModels
         public ICommand NavegarMarcasCommand { get; set; }
         public ICommand NavegarProductosCommand { get; set; }
         public ICommand NavegarUsuariosCommand { get; set; }
+        public ICommand CerrarSesionCommand { get; set; }
         public ICommand IniciarSesionCommand { get; set; }
 
         public MainViewModel()
@@ -31,6 +32,7 @@ namespace ProyectoRefaccionaria2.ViewModels
             NavegarProductosCommand = new RelayCommand(NavegarProductos);
             IniciarSesionCommand = new RelayCommand(IniciarSesion);
             NavegarUsuariosCommand = new RelayCommand(NavegarUsuarios);
+            CerrarSesionCommand = new RelayCommand(CerrarSesion);
         }
 
         private void IniciarSesion()
@@ -56,6 +58,8 @@ namespace ProyectoRefaccionaria2.ViewModels
         private void CerrarSesion() 
         {
             IsLogged = "VerLoggin";
+
+            Actualizar();
         }
 
         private void NavegarUsuarios()
