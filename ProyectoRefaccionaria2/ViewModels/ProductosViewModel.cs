@@ -89,7 +89,7 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void Regresar()
         {
-            throw new NotImplementedException();
+          
         }
 
         //Actualizar la base de datos para que se vean los cambios en la lista

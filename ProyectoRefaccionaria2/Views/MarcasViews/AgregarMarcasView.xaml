@@ -44,7 +44,8 @@
                     </Border>
 
                     <Border Background="#e01010" Height="30" CornerRadius="10" Width="90">
-                        <Button  Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold" Command="{Binding RegresarCommnd}">Cancelar</Button>
+                        <Button  Background="Transparent" BorderThickness="0" Foreground="White"
+                                 FontWeight="Bold" Command="{Binding RegresarCommand}">Cancelar</Button>
                     </Border>
 
                 </WrapPanel>
