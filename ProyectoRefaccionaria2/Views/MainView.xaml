@@ -23,16 +23,29 @@
             <vistasMarcas:IndexMarcas/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:UsuariosViewModel}">
-            <vistasUsuarios:VerUsuariosView/>
+            <vistasUsuarios:IndexUsuariosView/>
         </DataTemplate>
+
+        <vistasUsuarios:LoginView x:Key="Login"/>
+
+        <DockPanel x:Key="General">
+            <StackPanel>
+                <Button Content="Marcas" Command="{Binding NavegarMarcasCommand}"/>
+                <Button Content="Productos" Command="{Binding NavegarProductosCommand}"/>
+                <Button Content="Usuarios" Command="{Binding NavegarUsuariosCommand}"/>
+            </StackPanel>
+            <ContentControl Content="{Binding ViewModelActual}"/>
+        </DockPanel>
     </Window.Resources>
 
-    <DockPanel>
-        <StackPanel>
-            <Button Content="Marcas" Command="{Binding NavegarMarcasCommand}"/>
-            <Button Content="Productos" Command="{Binding NavegarProductosCommand}"/>
-            <Button Content="Usuarios" Command="{Binding NavegarUsuariosCommand}"/>
-        </StackPanel>
-        <ContentControl Content="{Binding ViewModelActual}"/>
-    </DockPanel>
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Content" Value="{StaticResource Login}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsLogged}" Value="VerGeneral">
+                    <Setter Property="Content" Value="{StaticResource General}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
 </Window>

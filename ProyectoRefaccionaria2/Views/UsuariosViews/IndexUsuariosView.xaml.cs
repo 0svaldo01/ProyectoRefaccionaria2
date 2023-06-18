@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ProyectoRefaccionaria2.Views.UsuariosViews
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for IndexUsuariosView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class IndexUsuariosView : UserControl
     {
-        public LoginView()
+        public IndexUsuariosView()
         {
             InitializeComponent();
         }

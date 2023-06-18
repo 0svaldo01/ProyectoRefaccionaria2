@@ -13,20 +13,30 @@ namespace ProyectoRefaccionaria2.ViewModels
     {
         public object ViewModelActual { get; set; } = new ProductosViewModel();
 
+        public string IsLogged { get; set; }
+
         public ICommand NavegarMarcasCommand { get; set; }
         public ICommand NavegarProductosCommand { get; set; }
         public ICommand NavegarUsuariosCommand { get; set; }
+        public ICommand IniciarSesionCommand { get; set; }
 
         public MainViewModel()
         {
             NavegarMarcasCommand = new RelayCommand(NavegarMarcas);
             NavegarProductosCommand = new RelayCommand(NavegarProductos);
+            IniciarSesionCommand = new RelayCommand(IniciarSesion);
             NavegarUsuariosCommand = new RelayCommand(NavegarUsuarios);
+        }
+
+        private void IniciarSesion()
+        {
+            IsLogged = "VerGeneral";
+            Actualizar();
         }
 
         private void NavegarUsuarios()
         {
-            ViewModelActual = new ProductosViewModel();
+            ViewModelActual = new UsuariosViewModel();
             Actualizar(nameof(ViewModelActual));
         }
 
