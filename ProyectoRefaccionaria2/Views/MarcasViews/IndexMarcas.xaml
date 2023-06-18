@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=vm:MarcasViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <ContentControl>
+    <ContentControl Height="450" VerticalAlignment="Bottom">
         <ContentControl.Resources>
             <local:VerMarcasView x:Key="VerMarcasView"/>
             <local:AgregarMarcasView x:Key="VerAgregarMarcas"/>

@@ -53,12 +53,13 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void VerProductos()
         {
-            throw new NotImplementedException();
+            Vista = "";
         }
 
         private void VerAgregarProductos()
         {
-            throw new NotImplementedException();
+            Vista = "VerAgregarProductos";
+            Actualizar();
         }
 
         private void AgregarProductos()

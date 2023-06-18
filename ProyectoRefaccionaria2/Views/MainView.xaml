@@ -17,7 +17,7 @@
     </Window.DataContext>
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:ProductosViewModel}">
-            <vistasProductos:VerProductosView/>
+            <vistasProductos:IndexProductos/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:MarcasViewModel}">
             <vistasMarcas:IndexMarcas/>
