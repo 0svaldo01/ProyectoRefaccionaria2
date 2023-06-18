@@ -22,7 +22,7 @@ namespace ProyectoRefaccionaria2.ViewModels
        
         public ObservableCollection<Productos> ListaProductos { get; set; } = new ObservableCollection<Productos>();
         public ObservableCollection<Marcas> ListaMarcas { get; set; }
-        public string Vista;
+        public string Vista { get; set; }
 
         #region commands
         public ICommand VerProductosCommand { get; set; }
