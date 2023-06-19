@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ProyectoRefaccionaria2.Views.UsuariosViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Margin="30" Background="#e3dddd">
+    <StackPanel Margin="0" Background="#e3dddd">
         <!--Modifique el textblock para que estuviera centrada la leyenda "Iniciar Sesión"-->
         <TextBlock Margin="0,0,0,50"
                    FontSize="40"

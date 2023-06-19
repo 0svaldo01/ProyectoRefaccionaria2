@@ -90,7 +90,10 @@ namespace ProyectoRefaccionaria2.ViewModels
                 else if (Vista =="VerAgregarMarcas")
                 {
                     catalogomarcas.Create(Marca);
+                   // Vista = "";
+                   
                 }
+                
                 ActualizarBD();
             }
             else
@@ -110,7 +113,6 @@ namespace ProyectoRefaccionaria2.ViewModels
         {
             Marca = marca;
             Vista = "VerEditarMarcas";
-            ActualizarBD();
             Actualizar();
         }
 
@@ -125,6 +127,7 @@ namespace ProyectoRefaccionaria2.ViewModels
         private void EliminarMarcas()
         {
            catalogomarcas.Delete(Marca);
+            Vista = "";
             ActualizarBD();
             Actualizar();
         }

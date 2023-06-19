@@ -32,7 +32,7 @@
                 <Button Content="Marcas" Command="{Binding NavegarMarcasCommand}"/>
                 <Button Content="Productos" Command="{Binding NavegarProductosCommand}"/>
                 <Button Content="Usuarios" Command="{Binding NavegarUsuariosCommand}"/>
-                <Button Content="Cerrar sesión" Command="{Binding CerrarSesionCommand}"/>
+                <Button Margin="0,550"  Content="Cerrar sesión" Command="{Binding CerrarSesionCommand}"/>
             </StackPanel>
             <ContentControl Content="{Binding ViewModelActual}"/>
         </DockPanel>

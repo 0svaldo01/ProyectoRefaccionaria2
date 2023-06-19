@@ -8,8 +8,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
             <WrapPanel  HorizontalAlignment="Center" DockPanel.Dock="Top" Orientation="Horizontal">
-            <Button  Command="{Binding VerAgregarCommand}">Agregar</Button>
-            </WrapPanel>
+            <Border Margin="0,0,30,0" Background="#e05206" Height="40" CornerRadius="10" Width="110">
+                <Button Background="Transparent" Command="{Binding VerAgregarCommand}"
+                         Foreground="White" FontSize="15" BorderThickness="0" FontWeight="Bold">Agregar</Button>
+            </Border>
+        </WrapPanel>
         <ListBox Background="#e3dddd" DockPanel.Dock="Top" ItemsSource="{Binding ListaUsuarios}"
          SelectedItem="{Binding Usuario}">
             <ItemsControl.ItemTemplate>

@@ -21,17 +21,18 @@ namespace ProyectoRefaccionaria2.Catalogos
         {
             context.Database.ExecuteSqlRaw($"call refaccionaria.spAgregarMarca('{m.Nombre}');");
             context.SaveChanges();
-           // context.Entry(m).Reload();
+            //context.Entry(m).Reload();
         }
         public void Update(Marcas m)
         {
             context.Update(m);
             context.SaveChanges();
+            //context.Entry(m).Reload();
         }
         public void Delete(Marcas m)
         {
            context.Remove(m);
-            context.SaveChanges();
+           context.SaveChanges();
         }
         internal void Reload(Marcas? Marca)
         {
