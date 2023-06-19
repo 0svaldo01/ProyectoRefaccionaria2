@@ -12,6 +12,7 @@ using GalaSoft.MvvmLight.Command;
 using ProyectoRefaccionaria2.Views.MarcasViews;
 using System.Windows.Controls;
 using ProyectoRefaccionaria2.Helpers;
+using System.Text.RegularExpressions;
 
 //se agrega un using para tener acceso a las views de marcas
 
@@ -25,14 +26,15 @@ namespace ProyectoRefaccionaria2.ViewModels
         MarcasCatalogo catalogomarcas = new MarcasCatalogo();
         public ObservableCollection<Productos> ListaProductos { get; set; } = new ObservableCollection<Productos>();
         public ObservableCollection<Marcas> ListaMarcas { get; set; } = new ObservableCollection<Marcas>();
+        
         private ValidarMarca ValidadorM = new ValidarMarca();
 
         // se hace una propiedad para mandar a llamar las vistas
         public string Vista { get; set; }
-
-        //se manda a llamar la clase de models para poder darle uso en los metodos de marcas
-        public Marcas?Marca { get; set; }
         public string Error { get; set; }
+
+        //se manda a llamar la clase de models para poder darle uso en los metodos de marcas 
+        public Marcas?Marca { get; set; }
 
         #region commands
         public ICommand VerMarcasCommand { get; set; }
@@ -52,7 +54,7 @@ namespace ProyectoRefaccionaria2.ViewModels
             VerAgregarMarcasCommand = new RelayCommand(VerAgregarMarcas);
             AgregarMarcasCommand = new RelayCommand(AgregarMarcas);
             VerEditarMarcasCommand = new RelayCommand<Marcas>(VerEditarMarcas);
-            EditarMarcasCommand = new RelayCommand<Marcas>(EditarMarcas);
+            EditarMarcasCommand = new RelayCommand(EditarMarcas);
             VerEliminarMarcasCommand = new RelayCommand<Marcas>(VerEliminarMarcas);
             EliminarMarcasCommand = new RelayCommand(EliminarMarcas);
             RegresarCommand = new RelayCommand(Regresar);
@@ -61,9 +63,7 @@ namespace ProyectoRefaccionaria2.ViewModels
             //muestren los cambios y luego ya actualizas para que se vean los cambios ¿no?
             //si, asi es como se actualiza
             ActualizarBD();
-            
-
-
+            Actualizar();
         }
 
         private void VerMarcas()
@@ -83,15 +83,13 @@ namespace ProyectoRefaccionaria2.ViewModels
 
             if(resultado == string.Empty)
             {
-                if (Vista == "VerEditarMarca")
+                if (Vista == "VerEditarMarca" && Marca!=null)
                 {
                     catalogomarcas.Update(Marca);
                 }
-                else if (Vista =="VerAgregarMarcas")
+                else if (Vista =="VerAgregarMarcas"&& Marca!=null)
                 {
-                    catalogomarcas.Create(Marca);
-                   // Vista = "";
-                   
+                    catalogomarcas.Create(Marca);                 
                 }
                 
                 ActualizarBD();
@@ -104,16 +102,16 @@ namespace ProyectoRefaccionaria2.ViewModels
            
         }
 
-        private void VerEditarMarcas(Marcas m)
-        {
-          
-        }
-
-        private void EditarMarcas(Marcas marca)
+        private void VerEditarMarcas(Marcas marca)
         {
             Marca = marca;
             Vista = "VerEditarMarcas";
             Actualizar();
+        }
+
+        private void EditarMarcas()
+        {
+           
         }
 
         private void VerEliminarMarcas(Marcas marca)

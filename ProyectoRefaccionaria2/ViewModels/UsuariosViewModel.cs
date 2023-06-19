@@ -16,6 +16,7 @@ namespace ProyectoRefaccionaria2.ViewModels
 {
     public class UsuariosViewModel: INotifyPropertyChanged
     {
+
         UsuariosCatalogo catalogousuarios = new UsuariosCatalogo();
         UsuariosRolCatalogo catalogoroles = new UsuariosRolCatalogo();
         

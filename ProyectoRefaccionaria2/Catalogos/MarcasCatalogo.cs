@@ -16,6 +16,10 @@ namespace ProyectoRefaccionaria2.Catalogos
         {
             return context.Marcas.OrderBy(x => x.Nombre);
         }
+        internal IEnumerable<Productos> GetAllProducts()
+        {
+            return context.Productos.OrderBy(x => x.IdMarcaP);
+        }
 
         public void Create(Marcas m)
         {
@@ -37,10 +41,6 @@ namespace ProyectoRefaccionaria2.Catalogos
         internal void Reload(Marcas? Marca)
         {
             context.Entry(Marca).Reload();
-        }
-        internal IEnumerable<Productos> GetAllProducts()
-        {
-            return context.Productos.OrderBy(x => x.IdMarcaP);
         }
     }
 }
