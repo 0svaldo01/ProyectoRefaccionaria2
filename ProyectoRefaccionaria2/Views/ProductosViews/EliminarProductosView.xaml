@@ -33,7 +33,7 @@
                 <Run Text="{Binding Producto.Nombre}">
                <!--hay que ver que onda aqui para ingresar el nombre del producto-->
                 </Run>
-                    <Run Text=" "></Run>
+                    <Run Text="de la marca "></Run>
                 <Run Text="{Binding Producto.IdMarcaPNavigation.Nombre}"></Run>
                     <Run Text="?"></Run>
                 </TextBlock>

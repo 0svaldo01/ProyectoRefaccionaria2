@@ -42,9 +42,9 @@ namespace ProyectoRefaccionaria2.ViewModels
             VerUsuariosCommand = new RelayCommand(VerUsuarios);
             VerAgregarCommand = new RelayCommand(VerAgregarUsuarios);
             AgregarUsuarioCommand = new RelayCommand(AgregarUsuario);
-            VerEditarUsuarioCommand = new RelayCommand(VerEditarUsuarios);
+            VerEditarUsuarioCommand = new RelayCommand<Usuarios>(VerEditarUsuarios);
             EditarUsuariosCommand = new RelayCommand(EditarUsuarios);
-            VerEliminarUsuariosCommand = new RelayCommand(VerEliminarUsuarios);
+            VerEliminarUsuariosCommand = new RelayCommand<Usuarios>(VerEliminarUsuarios);
             EliminarUsuariosCommand = new RelayCommand(EliminarUsuarios);
 
             RegresarCommand = new RelayCommand(Regresar);
@@ -71,19 +71,25 @@ namespace ProyectoRefaccionaria2.ViewModels
             Vista = "VerAgregarUsuarios";
             Actualizar();
         }
-        private void VerEliminarUsuarios()
+        private void VerEliminarUsuarios(Usuarios usuario)
         {
-            throw new NotImplementedException();
+            Usuario = usuario;
+            Vista = "VerEliminarUsuarios";
+            Actualizar();
         }
 
         private void EliminarUsuarios()
         {
-            throw new NotImplementedException();
+            catalogousuarios.Delete(Usuario);
+            Vista = "";
+            ActualizarBD();
         }
 
-        private void VerEditarUsuarios()
+        private void VerEditarUsuarios(Usuarios usuario)
         {
-            throw new NotImplementedException();
+            Usuario = usuario;
+            Vista = "VerEditarUsuarios";
+            Actualizar();
         }
         private void EditarUsuarios()
         {

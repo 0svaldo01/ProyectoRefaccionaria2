@@ -15,15 +15,15 @@
                 <Label Content="CREA TU CUENTA" Foreground="Black" FontSize="25" FontWeight="Bold" FontStyle="Italic"  HorizontalAlignment="Center"/>
                 <Separator Background="#df4f11" ></Separator>
                 <Label Content="Nombre" Foreground="Black" />
-                <TextBox Text="{Binding Usuario.Nombre}"  BorderBrush="Black" Background="Transparent" Foreground="White" FontSize="18" >
+                <TextBox Text="{Binding Usuario.Nombre}"  BorderBrush="Black" Background="Transparent"  FontSize="18" >
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
-                <Label Content="Nombre de usuario" Foreground="Black" />
-                <TextBox  Text="{Binding Usuario.Correo}"  BorderBrush="black" Background="Transparent" Foreground="White" FontSize="18" >
+                <Label Content="Correo Electronico" Foreground="Black" />
+                <TextBox  Text="{Binding Usuario.Correo}"  BorderBrush="black" Background="Transparent"  FontSize="18" >
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
