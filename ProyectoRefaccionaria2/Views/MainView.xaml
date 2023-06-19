@@ -27,12 +27,25 @@
 
         <vistasUsuarios:LoginView x:Key="Login"/>
 
-        <DockPanel x:Key="General">
-            <StackPanel>
-                <Button Content="Marcas" Command="{Binding NavegarMarcasCommand}"/>
-                <Button Content="Productos" Command="{Binding NavegarProductosCommand}"/>
-                <Button Content="Usuarios" Command="{Binding NavegarUsuariosCommand}"/>
-                <Button Margin="0,550"  Content="Cerrar sesión" Command="{Binding CerrarSesionCommand}"/>
+        <DockPanel x:Key="General" >
+            <StackPanel Background="#e3dddd" >
+                <Button Background="#f2B63D" Foreground="#FFFFFF"
+                        FontWeight="Bold" Height="30" Margin="0,0,0,0"
+                        BorderThickness="1.5" BorderBrush="#0A061A"
+                        
+                        Content="Marcas" Command="{Binding NavegarMarcasCommand}"/>
+                <Button  Background="#fe6700" Foreground="#FFFFFF"
+                        FontWeight="Bold" Height="30" Margin="0,0,0,0"
+                        BorderThickness="1.5" BorderBrush="#0A061A" Content="Productos" Command="{Binding NavegarProductosCommand}"/>
+                <Button  Background="#FF0000" Foreground="White"
+                        FontWeight="Bold" Height="30" Margin="0,0,0,0"
+                        BorderThickness="1.5" BorderBrush="#0A061A" Content="Usuarios" Command="{Binding NavegarUsuariosCommand}"/>
+                <Button Background="#FF0000" Foreground="White"
+                        FontWeight="Bold" Height="30" Margin="0,550,0,0"
+                        BorderThickness="0" Content="Cerrar sesión" 
+                        Command="{Binding CerrarSesionCommand}">       
+                </Button>
+                
             </StackPanel>
             <ContentControl Content="{Binding ViewModelActual}"/>
         </DockPanel>
