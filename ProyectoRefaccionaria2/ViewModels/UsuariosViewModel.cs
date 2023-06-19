@@ -115,14 +115,11 @@ namespace ProyectoRefaccionaria2.ViewModels
             {
                 ListaUsuarios.Add(item);
             }
-<<<<<<< HEAD
-           foreach(var item in ca)
-=======
             foreach (var item in catalogoroles.GetAllRolesUsuarios())
             {
                 ListaRolesUsuarios.Add(item);
             }
->>>>>>> ya funciona agregar usuarios
+
             Actualizar();
         }
     }
