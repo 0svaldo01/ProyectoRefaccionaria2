@@ -10,11 +10,10 @@
         xmlns:vm="clr-namespace:ProyectoRefaccionaria2.ViewModels"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
-    <!--esto lo puse aqui y hice la vista principal esta porque asi lo hicieron los demas-->
-    <!--a esta vista el falta el diseño pero parece que no lleva nada realmente--> 
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
+    
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:ProductosViewModel}">
             <vistasProductos:IndexProductos/>

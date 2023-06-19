@@ -1,4 +1,5 @@
-﻿using ProyectoRefaccionaria2.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProyectoRefaccionaria2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace ProyectoRefaccionaria2.Catalogos
         //En este metodo mandamos llamar a la base de datos una lista con todos los usuarios ordenados por el id
         public IEnumerable<Usuarios> GetAllUsuarios()
         {
-            return context.Usuarios.OrderBy(x => x.IdUsuarios);
+            return context.Usuarios.OrderBy(x => x.IdUsuarios).Include(x=>x.IdTipoRolNavigation);
         }
 
         //Realmente no se como se implementa ese metodo, solo recuerdo

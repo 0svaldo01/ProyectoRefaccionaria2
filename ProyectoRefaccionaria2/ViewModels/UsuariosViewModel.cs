@@ -17,12 +17,15 @@ namespace ProyectoRefaccionaria2.ViewModels
     public class UsuariosViewModel: INotifyPropertyChanged
     {
         UsuariosCatalogo catalogousuarios = new UsuariosCatalogo();
+        
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; }= new ObservableCollection<Usuarios>();
+        public ObservableCollection<Rolesusuarios> ListaRolesUsuarios { get; set; } = new ObservableCollection<Rolesusuarios>();
+        public Usuarios? usuario { get; set; }
+        public Rolesusuarios? rol { get; set; }
         public string Vista { get; set; }
-        public Usuarios?usuario { get; set; }
         public ICommand VerUsuariosCommand { get; set; }
         public ICommand VerAgregarCommand { get; set; }
         public ICommand AgregarUsuarioCommand {  get; set; }
@@ -36,33 +39,18 @@ namespace ProyectoRefaccionaria2.ViewModels
             VerAgregarCommand = new RelayCommand(verAgregar);
             AgregarUsuarioCommand = new RelayCommand(AgregarUsuario);
             VerEditarUsuarioCommand = new RelayCommand(VerEditar);
-            RegresarCommand = new RelayCommand<Usuarios>(Regresar);
+            RegresarCommand = new RelayCommand(Regresar);
             ActualizarBD();
             Actualizar();
             
         }
 
-        private void Regresar(Usuarios u)
+        private void Regresar()
         {
-           usuario  = u;
-            Vista = "Regresar";
-            Actualizar();
-
-        }
-        private void Actualizar(string? propiedad=null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propiedad));
-        }
-
-        private void ActualizarBD()
-        {
-            ListaUsuarios.Clear();
-            foreach(var item in catalogousuarios.GetAllUsuarios())
-            {
-                ListaUsuarios.Add(item);
-            }
+        
             Actualizar();
         }
+ 
         private void VerEditar()
         {
             throw new NotImplementedException();
@@ -81,6 +69,23 @@ namespace ProyectoRefaccionaria2.ViewModels
         private void VerUsuarios()
         {
             throw new NotImplementedException();
+        }
+
+        private void Actualizar(string? propiedad = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propiedad));
+        }
+
+        private void ActualizarBD()
+        {
+            ListaUsuarios.Clear();
+            ListaRolesUsuarios.Clear();
+            foreach (var item in catalogousuarios.GetAllUsuarios())
+            {
+                ListaUsuarios.Add(item);
+            }
+            foreach(var item in ca)
+            Actualizar();
         }
     }
 }
