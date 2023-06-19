@@ -15,7 +15,6 @@
         <ContentControl.Style>
             <Style TargetType="ContentControl">
                 <Setter Property="Content" Value="{StaticResource VerProductosView}"/>
-                
                 <Style.Triggers>
                     
                     <DataTrigger Binding="{Binding Vista}" Value="VerAgregarProductos">

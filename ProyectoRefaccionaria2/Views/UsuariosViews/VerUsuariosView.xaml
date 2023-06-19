@@ -6,167 +6,32 @@
              xmlns:local="clr-namespace:ProyectoRefaccionaria2.Views.UsuariosViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
+    <DockPanel>
+            <WrapPanel  HorizontalAlignment="Center" DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button  Command="{Binding VerAgregarCommand}">Agregar</Button>
+            </WrapPanel>
+        <ListBox Background="#e3dddd" DockPanel.Dock="Top" ItemsSource="{Binding ListaUsuarios}"
+         SelectedItem="{Binding Usuario}">
+            <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border CornerRadius="10" BorderBrush="#e05206" Padding="10" Margin="5" Background="#F5F5DC">
+                            <DockPanel>
+                                <StackPanel >
+                                    <TextBlock Width="400" FontSize="16"><Run Text="{Binding Nombre}"></Run></TextBlock>
+                                    <TextBlock Width="400" FontSize="16"><Run Text="{Binding Correo}"></Run></TextBlock>
+                                    <TextBlock Width="400" FontSize="16"><Run Text="{Binding IdTipoRolNavigation.Nombre}"></Run></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                <Button Content="Eliminar" Command="{Binding Path=DataContext.VerEliminarUsuariosCommand,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
 
-        <DockPanel x:Key="Agregar">
-            <Border Padding="10" 
-                    DockPanel.Dock="Top" 
-                    BorderThickness="0,0,0,2" 
-                    BorderBrush="Black" >
-                <TextBlock FontSize="20">Agregar usuario</TextBlock>
-            </Border>
-
-            <StackPanel Margin="20">
-                <Label>Nombre:</Label>
-                <TextBox Text="{Binding Usuario.Nombre}"></TextBox>
-
-                <Label>Correo electrónico:</Label>
-                <TextBox Text="{Binding Usuario.Correo}"></TextBox>
-
-                <Label>Contraseña:</Label>
-                <TextBox Text="{Binding Usuario.Contrasena}"></TextBox>
-
-                <TextBlock Margin="10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
-
-                <WrapPanel HorizontalAlignment="Center" Margin="20">
-                    <Button Padding="10,5" Command="{Binding GuardarCommand}">Agregar</Button>
-                    <Button Padding="10,5" Command="{Binding CancelarCommand}" Margin="10,0,0,0">Cancelar</Button>
-                </WrapPanel>
-            </StackPanel>
+                                    <Button Content="Editar" Command="{Binding Path=DataContext.VerEditarUsuarioCommand, 
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
         </DockPanel>
-        <DockPanel x:Key="Editar">
-            <Border Padding="10" DockPanel.Dock="Top" BorderThickness="0,0,0,2" BorderBrush="Black" >
-                <TextBlock FontSize="20">Editar usuario</TextBlock>
-            </Border>
-
-            <StackPanel Margin="20">
-                <Label>Nombre:</Label>
-                <TextBox Text="{Binding Usuario.Nombre}"></TextBox>
-
-                <Label>Correo electrónico:</Label>
-                <TextBox Text="{Binding Usuario.Correo}"></TextBox>
-
-                <WrapPanel HorizontalAlignment="Center" Margin="20">
-                    <Button Padding="10,5" Command="{Binding GuardarCommand}">Guardar</Button>
-                    <Button Padding="10,5" Command="{Binding CancelarCommand}" Margin="10,0,0,0">Cancelar</Button>
-                </WrapPanel>
-            </StackPanel>
-        </DockPanel>
-
-        <DockPanel x:Key="VerBitacoras">
-            <Border Padding="10" DockPanel.Dock="Top"
-                    BorderThickness="0,0,0,2" 
-                    BorderBrush="Black" >
-                <DockPanel>
-                    <Button DockPanel.Dock="Right"
-                            Padding="10,5"
-                            Command="{Binding CancelarCommand}">Regresar</Button>
-                    <TextBlock FontSize="20">Lista de bitacoras</TextBlock>
-                </DockPanel>
-            </Border>
-            <DataGrid SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False"
-                      CanUserReorderColumns="False" CanUserResizeColumns="False"
-                      AutoGenerateColumns="False" ItemsSource="{Binding Usuario.Bitacoras}" Margin="20"                    
-                      >
-                <DataGrid.Columns>
-                    <DataGridTextColumn FontSize="20" Binding="{Binding Observaciones }" Header="Correo electrónico"  Width="*"></DataGridTextColumn>
-                    <DataGridTextColumn FontSize="20" Binding="{Binding Fecha}" Header="Fecha de acceso" Width=".4*"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </DockPanel>
-        <DockPanel x:Key="Ver">
-            <Border Padding="10" DockPanel.Dock="Top"
-                    BorderThickness="0,0,0,2" 
-                    BorderBrush="#e05206" >
-                <DockPanel>
-                    <Border DockPanel.Dock="Right" Background="#e05206"
-                            Height="30" CornerRadius="10" Width="90"
-                            >
-                        <Button  Command="{Binding VerAgregarCommand}" 
-                    Background="Transparent" 
-                    BorderThickness="0" 
-                    Foreground="White"
-                    FontWeight="Bold"
-                    Height="30"
-                    VerticalAlignment="Top">Agregar</Button>
-                    </Border>
-
-                    <TextBlock FontSize="20" >Lista de Usuarios</TextBlock>
-                </DockPanel>
-            </Border>
-
-            <DataGrid SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False"
-                      CanUserReorderColumns="False" CanUserResizeColumns="False"
-                      AutoGenerateColumns="False" ItemsSource="{Binding Usuarios}" Margin="20"                    
-                      >
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn FontSize="20" Binding="{Binding Nombre}" Header="Nombre" Width=".4*"></DataGridTextColumn>
-                    <DataGridTextColumn FontSize="20" Binding="{Binding Correo}" Header="Correo electrónico"  Width=".4*"></DataGridTextColumn>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock FontSize="20">
-                                    <!--<Hyperlink 
-                                    Command="{Binding ElementName=ventana, Path=DataContext.EditarCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Foreground="Black">Editar</Hyperlink>-->
-                                </TextBlock>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-
-                                <TextBlock FontSize="20">
-                                    <!--<Hyperlink 
-                                    Click="Hyperlink_Click"
-                                    Command="{Binding ElementName=ventana, Path=DataContext.EliminarCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Foreground="Black">Eliminar</Hyperlink>-->
-                                </TextBlock>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-
-
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock FontSize="20">
-                                    <!--<Hyperlink 
-                                    Command="{Binding ElementName=ventana,
-                                    Path=DataContext.VerBitacorasCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Foreground="Black">Bitacoras</Hyperlink>-->
-                                </TextBlock>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
-                </DataGrid.Columns>
-            </DataGrid>
-        </DockPanel>
-    </UserControl.Resources>
-    <ContentControl >
-        <ContentControl.Style>
-            <Style TargetType="ContentControl">
-                <Setter Property="Content" Value="{StaticResource Ver}"></Setter>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding Modo}" Value="Agregar">
-                        <Setter Property="Content" Value="{StaticResource Agregar}"></Setter>
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding Modo}" Value="Editar">
-                        <Setter Property="Content" Value="{StaticResource Editar}"></Setter>
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding Modo}" Value="VerBitacoras">
-                        <Setter Property="Content" Value="{StaticResource VerBitacoras}"></Setter>
-                    </DataTrigger>
-
-
-                </Style.Triggers>
-            </Style>
-        </ContentControl.Style>
-    </ContentControl>
 </UserControl>

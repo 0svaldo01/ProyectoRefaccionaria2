@@ -53,6 +53,8 @@ namespace ProyectoRefaccionaria2.ViewModels
             //Se actualiza primero la base de datos para que se 
             //muestren los cambios y luego ya actualizas para que se vean los cambios ¿no?
             ActualizarBD();
+            //Movi esto aqui yop(victor)
+            Actualizar();
         }
 
         private void AgregarProducto()

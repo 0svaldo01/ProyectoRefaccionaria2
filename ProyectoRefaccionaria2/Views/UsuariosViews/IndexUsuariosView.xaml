@@ -12,10 +12,22 @@
             <local:LoginView x:Key="VerLogin"/>
             <local:EditarUsuarioView x:Key="VerEditar"/>
             <local:RegistrarUsuariosView x:Key="VerRegistrar"/>
+            <local:EliminarUsuarioView x:Key="VerEliminar"/>
         </ContentControl.Resources>
         <ContentControl.Style>
             <Style TargetType="ContentControl">
                 <Setter Property="Content" Value="{StaticResource VerUsuarios}"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Vista}" Value="VerAgregarUsuarios" >
+                        <Setter Property="Content" Value="{StaticResource VerRegistrar}"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Vista}" Value="VerEditarUsuarios">
+                        <Setter Property="Content" Value="{StaticResource VerRegistrar}"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Vista}" Value="VerEliminarUsuarios">
+                        <Setter Property="Content" Value="{StaticResource VerEliminar }"></Setter>
+                    </DataTrigger>
+                </Style.Triggers>
             </Style>
         </ContentControl.Style>
     </ContentControl>

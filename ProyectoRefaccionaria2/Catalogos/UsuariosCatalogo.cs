@@ -16,14 +16,15 @@ namespace ProyectoRefaccionaria2.Catalogos
         //En este metodo mandamos llamar a la base de datos una lista con todos los usuarios ordenados por el id
         public IEnumerable<Usuarios> GetAllUsuarios()
         {
-            return context.Usuarios.OrderBy(x => x.IdUsuarios).Include(x=>x.IdTipoRolNavigation);
+            return context.Usuarios.OrderBy(x => x.Nombre).Include(x=>x.IdTipoRolNavigation);
         }
-
-        //Realmente no se como se implementa ese metodo, solo recuerdo
-        //que es necesario para reflejar cambios sin cerrar el programa
-        public void Recargar(Usuarios u)
+        public IEnumerable<Rolesusuarios> GetAllRoles() 
         {
-            context.Entry(u).Reload();
+            return context.Rolesusuarios.OrderBy(x => x.Nombre);
+        }
+        public void Recargar(Usuarios? usuario)
+        {
+            context.Entry(usuario).Reload();
         }
         public void Create(Usuarios u)
         {

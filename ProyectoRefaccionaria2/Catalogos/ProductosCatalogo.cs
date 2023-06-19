@@ -11,12 +11,18 @@ namespace ProyectoRefaccionaria2.Catalogos
     public class ProductosCatalogo
     {
         RefaccionariaContext context = new RefaccionariaContext();
-
         public IEnumerable<Productos> GetAllProductos() 
         {
             return context.Productos.OrderBy(x => x.Nombre).Include(x=>x.IdMarcaPNavigation);
         }
-
+        internal IEnumerable<Marcas> GetAllMarcas()
+        {
+            return context.Marcas.OrderBy(x => x.Nombre);
+        }
+        internal void Reload(Productos? producto)
+        {
+            context.Entry(producto).Reload();
+        }
         public void Create(Productos p)
         {
             context.Database.ExecuteSqlRaw($"call refaccionaria.spAgregarProducto('{p.Descripcion}','{p.Nombre}','{p.Precio}','{p.IdMarcaP}');");
@@ -34,14 +40,5 @@ namespace ProyectoRefaccionaria2.Catalogos
             context.SaveChanges();
         }
 
-        internal IEnumerable<Marcas> GetAllMarcas()
-        {
-            return context.Marcas.OrderBy(x => x.Nombre);
-        }
-
-        internal void Reload(Productos? producto)
-        {
-            context.Entry(producto).Reload();
-        }
     }
 }

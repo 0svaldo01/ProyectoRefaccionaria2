@@ -12,11 +12,10 @@
         <Grid>
             <StackPanel  Margin="10,10,10,10" Background="#e3dddd">
                 <Separator Background="#df4f11"></Separator>
-                   <!--En cada Text van los Binding para llamar los datos y  esten enlazados-->
                 <Label Content="CREA TU CUENTA" Foreground="Black" FontSize="25" FontWeight="Bold" FontStyle="Italic"  HorizontalAlignment="Center"/>
                 <Separator Background="#df4f11" ></Separator>
                 <Label Content="Nombre" Foreground="Black" />
-                <TextBox Text="{}"  BorderBrush="Black" Background="Transparent" Foreground="White" FontSize="18" >
+                <TextBox Text="{Binding Usuario.Nombre}"  BorderBrush="Black" Background="Transparent" Foreground="White" FontSize="18" >
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -24,7 +23,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Label Content="Nombre de usuario" Foreground="Black" />
-                <TextBox  Text="{}"  BorderBrush="black" Background="Transparent" Foreground="White" FontSize="18" >
+                <TextBox  Text="{Binding Usuario.Correo}"  BorderBrush="black" Background="Transparent" Foreground="White" FontSize="18" >
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -32,7 +31,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Label Content="Contraseña" Foreground="Black" />
-                <TextBox Text="{}"  BorderBrush="Black" Background="Transparent" Foreground="White" FontSize="18">
+                <TextBox Text="{Binding Usuario.Contraseña}"  BorderBrush="Black" Background="Transparent" Foreground="White" FontSize="18">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -41,19 +40,21 @@
                 </TextBox>
 
                 <Label Content="Rol" Foreground="Black" />
-                <ComboBox  Text="{}" BorderBrush="Black" Background="Transparent" Foreground="White" FontSize="18">
-                </ComboBox>
+                <ComboBox ItemsSource="{Binding ListaRolesUsuarios}" SelectedValue="{Binding Usuario.IdTipoRol}" 
+                          DisplayMemberPath="Nombre" SelectedValuePath="IdRol" 
+                          BorderBrush="Black" Background="Transparent" Foreground="Black" FontSize="18"/>
+
 
                 <TextBlock Margin="10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
                 <WrapPanel Margin="0,20,0,0" HorizontalAlignment="Center">
                     <!--en command, falta el binding para que mande a llamar al metodo de agregar-->
 
                     <Border Margin="0,0,30,0" Background="#e05206" Height="30" CornerRadius="10" Width="90">
-                        <Button Command="{}" Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold" Height="30" VerticalAlignment="Top">Registrarse</Button>
+                        <Button Command="{Binding AgregarUsuarioCommand}" Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold" Height="30" VerticalAlignment="Top">Registrarse</Button>
                     </Border>
 
                     <Border Background="#e01010" Height="30" CornerRadius="10" Width="90">
-                        <Button  Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold" Command="{Binding RegresarCommnd}">Atrás</Button>
+                        <Button  Command="{Binding RegresarCommand}" Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold">Atrás</Button>
                     </Border>
 
                 </WrapPanel>
