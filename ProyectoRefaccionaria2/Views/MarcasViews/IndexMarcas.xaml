@@ -8,25 +8,24 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=vm:MarcasViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <ContentControl Height="450" VerticalAlignment="Bottom">
+    <ContentControl >
         <ContentControl.Resources>
             <local:VerMarcasView x:Key="VerMarcasView"/>
-            <local:AgregarMarcasView x:Key="VerAgregarMarcas"/>
-            <local:EditarMarcasView x:Key="VerEditarMarcas"/>
-            <local:EliminarMarcasView x:Key="VerEliminarMarcas"/>
+            <local:AgregarMarcasView x:Key="AgregarMarcasView"/>
+            <local:EliminarMarcasView x:Key="EliminarMarcasView"/>
         </ContentControl.Resources>
         <ContentControl.Style>
             <Style TargetType="ContentControl">
                 <Setter Property="Content" Value="{StaticResource VerMarcasView}"/>
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding Vista}" Value="VerAgregarMarcas">
-                        <Setter Property="Content" Value="{StaticResource VerAgregarMarcas}"/>
+                        <Setter Property="Content" Value="{StaticResource AgregarMarcasView}"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Vista}" Value="VerEditarMarcas">
-                        <Setter Property="Content" Value="{StaticResource VerEditarMarcas}"/>
+                        <Setter Property="Content" Value="{StaticResource AgregarMarcasView}"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Vista}" Value="VerEliminarMarcas">
-                        <Setter Property="Content" Value="{StaticResource VerEliminarMarcas}"/>
+                        <Setter Property="Content" Value="{StaticResource EliminarMarcasView}"/>
                     </DataTrigger>
                 </Style.Triggers>
             </Style>

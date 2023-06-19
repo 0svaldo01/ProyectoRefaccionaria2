@@ -22,7 +22,7 @@
                     </Style>
                 </StackPanel.Resources>
                 <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Nombre:</TextBlock>
-                <TextBox Text="{Binding auto.Marca}">
+                <TextBox Text="{Binding Marca.Nombre}">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -30,7 +30,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Cantidad de Productos:</TextBlock>
-                <TextBox Text="{Binding auto.Modelo}">
+                <TextBox Text="{Binding Marca.CantProductos}">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -40,7 +40,10 @@
                 <WrapPanel Margin="0,20,0,0" HorizontalAlignment="Center">
 
                     <Border Margin="0,0,30,0" Background="#e05206" Height="30" CornerRadius="10" Width="90">
-                        <Button Command="{Binding RegistrarVehiculoCommand}" Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold" Height="30" VerticalAlignment="Top">Agregar</Button>
+                        <Button Command="{Binding AgregarMarcasCommand}" 
+                                Background="Transparent" BorderThickness="0" 
+                                Foreground="White" FontWeight="Bold" Height="30"
+                                VerticalAlignment="Top">Agregar</Button>
                     </Border>
 
                     <Border Background="#e01010" Height="30" CornerRadius="10" Width="90">

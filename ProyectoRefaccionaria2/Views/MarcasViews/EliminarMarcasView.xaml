@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoRefaccionaria2.Views.MarcasViews"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="800">
     <Border Background="#e3dddd" CornerRadius="10" Margin="30"  BorderBrush="#df4f11" BorderThickness="5">
         <DockPanel Margin="10,20,10,-5">
             <TextBlock HorizontalAlignment="Center"
@@ -19,11 +19,14 @@
                            FontWeight="DemiBold"
                            TextWrapping="Wrap"
                            FontSize="20"
-                           Text="{Binding auto.MensajeEliminarVehiculo}"
-                           ></TextBlock>
-                <WrapPanel HorizontalAlignment="Center" Margin="0,-30,0,0">
+                           ><Run Text="¿Desea Eliminar esta marca: "></Run>
+                    <Run Text="{Binding Marca.Nombre}"/>
+                    <Run Text="?"/>
+                </TextBlock>
+                
+                <WrapPanel HorizontalAlignment="Center" Margin="0,30,0,0">
                     <Border Margin="0,0,30,0" Background="#e05206" Height="40" CornerRadius="10" Width="110">
-                        <Button Background="Transparent" Command="{Binding EliminarVentaCommand}" 
+                        <Button Background="Transparent" Command="{Binding EliminarMarcasCommand}" 
                                 Foreground="White" FontSize="15" BorderThickness="0" FontWeight="Bold">Sí</Button>
                     </Border>
                     <Border Background="#e01010" Height="40" CornerRadius="10" Width="110">

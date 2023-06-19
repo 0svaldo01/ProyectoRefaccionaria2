@@ -11,6 +11,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using ProyectoRefaccionaria2.Views.MarcasViews;
 using System.Windows.Controls;
+using ProyectoRefaccionaria2.Helpers;
 
 //se agrega un using para tener acceso a las views de marcas
 
@@ -22,14 +23,16 @@ namespace ProyectoRefaccionaria2.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
         #endregion
         MarcasCatalogo catalogomarcas = new MarcasCatalogo();
-        public ObservableCollection<Productos> ListaProductos { get; set; } 
+        public ObservableCollection<Productos> ListaProductos { get; set; } = new ObservableCollection<Productos>();
         public ObservableCollection<Marcas> ListaMarcas { get; set; } = new ObservableCollection<Marcas>();
+        private ValidarMarca ValidadorM = new ValidarMarca();
 
         // se hace una propiedad para mandar a llamar las vistas
         public string Vista { get; set; }
 
         //se manda a llamar la clase de models para poder darle uso en los metodos de marcas
-        public Marcas?Marcas { get; set; }
+        public Marcas?Marca { get; set; }
+        public string Error { get; set; }
 
         #region commands
         public ICommand VerMarcasCommand { get; set; }
@@ -50,22 +53,22 @@ namespace ProyectoRefaccionaria2.ViewModels
             AgregarMarcasCommand = new RelayCommand(AgregarMarcas);
             VerEditarMarcasCommand = new RelayCommand<Marcas>(VerEditarMarcas);
             EditarMarcasCommand = new RelayCommand<Marcas>(EditarMarcas);
-            VerEliminarMarcasCommand = new RelayCommand(VerEliminarMarcas);
-            AgregarMarcasCommand = new RelayCommand<Marcas>(EliminarMarcas);
-            RegresarCommand = new RelayCommand<Marcas>(Regresar);
+            VerEliminarMarcasCommand = new RelayCommand<Marcas>(VerEliminarMarcas);
+            EliminarMarcasCommand = new RelayCommand(EliminarMarcas);
+            RegresarCommand = new RelayCommand(Regresar);
 
             //Se actualiza primero la base de datos para que se 
             //muestren los cambios y luego ya actualizas para que se vean los cambios ¿no?
             //si, asi es como se actualiza
             ActualizarBD();
-            Actualizar();
+            
 
 
         }
 
         private void VerMarcas()
         {
-            Vista = "VerAgregarMarcas";
+            Vista = "";
         }
 
         private void VerAgregarMarcas()
@@ -76,70 +79,63 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void AgregarMarcas()
         {
-            if(Marcas != null)
+            var resultado = ValidadorM.Validar(Marca);
+
+            if(resultado == string.Empty)
             {
-                if (Marcas.IdMarca != 0)
+                if (Vista == "VerEditarMarca")
                 {
-                    catalogomarcas.Update(Marcas);
+                    catalogomarcas.Update(Marca);
                 }
-                else
+                else if (Vista =="VerAgregarMarcas")
                 {
-                    catalogomarcas.Create(Marcas);
+                    catalogomarcas.Create(Marca);
                 }
-                
+                ActualizarBD();
             }
-            ActualizarBD();
-            Vista = "Ver";
-            Actualizar();
+            else
+            {
+                Error = resultado;
+                Actualizar();
+            }
+           
         }
 
         private void VerEditarMarcas(Marcas m)
         {
-           if(m != null)
-            {
-                catalogomarcas.Update(m);
-                ActualizarBD();
-                Vista = "Editar";
-                Actualizar();
-            }
+          
         }
 
-        private void EditarMarcas(Marcas m)
+        private void EditarMarcas(Marcas marca)
         {
-            Marcas = m;
-            Vista = "Editar";
+            Marca = marca;
+            Vista = "VerEditarMarcas";
+            ActualizarBD();
             Actualizar();
         }
 
-        private void VerEliminarMarcas()
+        private void VerEliminarMarcas(Marcas marca)
         {
-            if(Marcas != null)
-            {
-                catalogomarcas.Delete(Marcas);
-                ActualizarBD() ;
-                Vista = "Ver";
-                Actualizar();
-            }
+            Marca = marca;
+            Vista = "VerEliminarMarcas";
+            Actualizar();
         }
-
        // se manda a llamar el model en el metodo, si es diferente a nulo, 
        //abre la vista de eliminar, al eliminar se actualiza la base de datos
-        private void EliminarMarcas(Marcas m)
+        private void EliminarMarcas()
         {
-            if(m !=null)
-            {
-                Marcas = m;
-                Vista = "Eliminar";
-                ActualizarBD();
-            }
+           
+           catalogomarcas.Delete(Marca);
+            ActualizarBD();
+           
         }
 
         //metodo para regresar/cancelar la accion en la vista
         //y regrese a la vista anterior
-        private void Regresar(Marcas m)
+        private void Regresar()
         {
-            Marcas = m;
-            Vista = "Regresar";
+            Vista = "VerMarcas";
+            catalogomarcas.Reload(Marca);
             Actualizar();
         }
 

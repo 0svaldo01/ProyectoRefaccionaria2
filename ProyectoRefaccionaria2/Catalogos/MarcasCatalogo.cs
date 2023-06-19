@@ -21,6 +21,7 @@ namespace ProyectoRefaccionaria2.Catalogos
         {
             context.Database.ExecuteSqlRaw($"call refaccionaria.spAgregarMarca('{m.Nombre}');");
             context.SaveChanges();
+           // context.Entry(m).Reload();
         }
         public void Update(Marcas m)
         {
@@ -29,8 +30,16 @@ namespace ProyectoRefaccionaria2.Catalogos
         }
         public void Delete(Marcas m)
         {
-            context.Remove(m);
+           context.Remove(m);
             context.SaveChanges();
+        }
+        internal void Reload(Marcas? Marca)
+        {
+            context.Entry(Marca).Reload();
+        }
+        internal IEnumerable<Productos> GetAllProducts()
+        {
+            return context.Productos.OrderBy(x => x.IdMarcaP);
         }
     }
 }
