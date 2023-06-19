@@ -124,10 +124,9 @@ namespace ProyectoRefaccionaria2.ViewModels
        //abre la vista de eliminar, al eliminar se actualiza la base de datos
         private void EliminarMarcas()
         {
-           
            catalogomarcas.Delete(Marca);
             ActualizarBD();
-           
+            Actualizar();
         }
 
         //metodo para regresar/cancelar la accion en la vista

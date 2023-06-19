@@ -84,7 +84,7 @@ namespace ProyectoRefaccionaria2.ViewModels
             {
                 ListaUsuarios.Add(item);
             }
-            foreach(var item in ca)
+           foreach(var item in ca)
             Actualizar();
         }
     }

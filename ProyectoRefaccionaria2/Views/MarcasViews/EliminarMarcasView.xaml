@@ -13,7 +13,7 @@
                        DockPanel.Dock="Top"
                        Margin="0,40,0,0"
                        >Eliminar Marca</TextBlock>
-            <StackPanel>
+            <StackPanel Height="334">
                 <TextBlock HorizontalAlignment="Center"
                            Margin="10,50,10,10"
                            FontWeight="DemiBold"
