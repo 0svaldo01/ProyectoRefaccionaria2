@@ -17,13 +17,25 @@ namespace ProyectoRefaccionaria2.Helpers
             {
                 return "Nombre incorrecto.";
             }
+            if (string.IsNullOrEmpty(producto.Descripcion))
+            {
+                return "La descripcíon no puede estar vacia";
+            }
+            if (producto.Precio == 0 || producto.Precio < 0)
+            {
+                return "El precio no puede estar vacio";
+                
+                //if (!Regex.IsMatch(producto.Nombre, @"^(0|[1-9]\\d{0,4}|1[0-7]\\d{4}|200000)$"))
+                //{
 
-            //if (!Regex.IsMatch(producto.Nombre, @"^(0|[1-9]\\d{0,4}|1[0-7]\\d{4}|200000)$"))
-            //{
-
-            //}
-
+                //}
+            }
+            if(producto.Precio> 99999999 || producto.Precio<0)
+            {
+                return "El precio es demasiado alto";
+            }
             return string.Empty;
+
         }
     }
 }

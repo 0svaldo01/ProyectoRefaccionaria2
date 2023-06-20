@@ -118,7 +118,9 @@ namespace ProyectoRefaccionaria2.ViewModels
        // se manda a llamar el model en el metodo, si es diferente a nulo, 
        //abre la vista de eliminar, al eliminar se actualiza la base de datos
         private void EliminarMarcas()
+
         {
+            //Validar
            catalogomarcas.Delete(Marca);
             Vista = "";
             ActualizarBD();

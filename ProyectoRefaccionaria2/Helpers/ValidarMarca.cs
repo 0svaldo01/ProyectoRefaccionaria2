@@ -11,11 +11,15 @@ namespace ProyectoRefaccionaria2.Helpers
     {
         public string Validar(Marcas marcas)
         {
-            if (string.IsNullOrEmpty(marcas?.Nombre??""))
+            if (string.IsNullOrEmpty(marcas?.Nombre ?? ""))
             {
                 return "El campo Nombre no puede estar vacio";
             }
-            return string.Empty;
+            
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 }
