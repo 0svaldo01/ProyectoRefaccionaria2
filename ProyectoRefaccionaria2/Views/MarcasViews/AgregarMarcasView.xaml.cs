@@ -24,5 +24,10 @@ namespace ProyectoRefaccionaria2.Views.MarcasViews
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
     }
 }

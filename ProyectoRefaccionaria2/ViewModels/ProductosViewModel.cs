@@ -32,8 +32,6 @@ namespace ProyectoRefaccionaria2.ViewModels
         #region commands
         public ICommand VerProductosCommand { get; set; }
         public ICommand VerAgregarProductosCommand { get; set; }
-        public ICommand AgregarProductoCommand { get; set; }
-        public ICommand VerEditarProductosCommand { get; set; }
         public ICommand EditarProductoCommand { get; set; }
         public ICommand VerEliminarProductosCommand { get; set; }
         public ICommand EliminarProductosCommand { get; set; }
@@ -43,11 +41,9 @@ namespace ProyectoRefaccionaria2.ViewModels
         {
             VerProductosCommand = new RelayCommand(VerProductos);
             VerAgregarProductosCommand = new RelayCommand(VerAgregarProductos);
-            VerEditarProductosCommand = new RelayCommand(VerEditarProductos);
             EditarProductoCommand = new RelayCommand<Productos>(EditarProductos);
             VerEliminarProductosCommand = new RelayCommand<Productos>(VerEliminarProductos);
             EliminarProductosCommand = new RelayCommand(EliminarProductos);
-            AgregarProductoCommand = new RelayCommand(AgregarProducto);
             RegresarCommand = new RelayCommand(Regresar);
 
             //Se actualiza primero la base de datos para que se 
@@ -90,17 +86,6 @@ namespace ProyectoRefaccionaria2.ViewModels
             Vista = "VerAgregarProductos";
             Actualizar();
         }
-
-        private void AgregarProductos()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void VerEditarProductos()
-        {
-            throw new NotImplementedException();
-        }
-
         private void EditarProductos(Productos producto)
         {
             Producto = producto;

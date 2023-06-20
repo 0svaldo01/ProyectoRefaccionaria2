@@ -56,7 +56,7 @@
                     <Border Margin="0,0,30,0" Background="#e05206" Height="40" CornerRadius="10" Width="100">
                         <Button Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold" Height="30" VerticalAlignment="Center"
                                 Command="{Binding AgregarProductoCommand}"
-                                >Agregar</Button>
+                                >Aceptar</Button>
                     </Border>
                     <Border Margin="0,0,30,0" Background="#e01010" Height="40" CornerRadius="10" Width="100">
                         <Button Background="Transparent" Command="{Binding RegresarCommand}" BorderThickness="0" Foreground="White" FontWeight="Bold" Height="30" VerticalAlignment="Center">Cancelar</Button>

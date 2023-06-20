@@ -31,7 +31,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Label Content="Contraseña" Foreground="Black" />
-                <TextBox Text="{Binding Usuario.Contraseña}"  BorderBrush="Black" Background="Transparent" Foreground="White" FontSize="18">
+                <TextBox Text="{Binding Usuario.Contraseña}"  BorderBrush="Black" Background="Transparent" Foreground="Black" FontSize="18">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -50,7 +50,10 @@
                     <!--en command, falta el binding para que mande a llamar al metodo de agregar-->
 
                     <Border Margin="0,0,30,0" Background="#e05206" Height="30" CornerRadius="10" Width="90">
-                        <Button Command="{Binding AgregarUsuarioCommand}" Background="Transparent" BorderThickness="0" Foreground="White" FontWeight="Bold" Height="30" VerticalAlignment="Top">Registrarse</Button>
+                        <Button Command="{Binding AgregarUsuarioCommand}" Background="Transparent"
+                                BorderThickness="0" Foreground="White" 
+                                FontWeight="Bold" Height="30" 
+                                VerticalAlignment="Top">Registrarse</Button>
                     </Border>
 
                     <Border Background="#e01010" Height="30" CornerRadius="10" Width="90">

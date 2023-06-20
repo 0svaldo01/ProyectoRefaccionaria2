@@ -31,7 +31,7 @@ namespace ProyectoRefaccionaria2.Catalogos
         {
             context.Update(m);
             context.SaveChanges();
-            //context.Entry(m).Reload();
+            context.Entry(m).Reload();
         }
         public void Delete(Marcas m)
         {

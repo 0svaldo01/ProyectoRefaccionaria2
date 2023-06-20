@@ -34,14 +34,13 @@ namespace ProyectoRefaccionaria2.ViewModels
         public string Error { get; set; }
 
         //se manda a llamar la clase de models para poder darle uso en los metodos de marcas 
-        public Marcas?Marca { get; set; }
+        public Marcas? Marca { get; set; } = new Marcas();
 
         #region commands
         public ICommand VerMarcasCommand { get; set; }
         public ICommand VerAgregarMarcasCommand { get; set; }
         public ICommand AgregarMarcasCommand { get; set; }
         public ICommand VerEditarMarcasCommand { get; set; }
-        public ICommand EditarMarcasCommand { get; set; }
         public ICommand VerEliminarMarcasCommand { get; set; }
         public ICommand EliminarMarcasCommand { get; set; }
         public ICommand RegresarCommand { get; set; }
@@ -54,7 +53,6 @@ namespace ProyectoRefaccionaria2.ViewModels
             VerAgregarMarcasCommand = new RelayCommand(VerAgregarMarcas);
             AgregarMarcasCommand = new RelayCommand(AgregarMarcas);
             VerEditarMarcasCommand = new RelayCommand<Marcas>(VerEditarMarcas);
-            EditarMarcasCommand = new RelayCommand(EditarMarcas);
             VerEliminarMarcasCommand = new RelayCommand<Marcas>(VerEliminarMarcas);
             EliminarMarcasCommand = new RelayCommand(EliminarMarcas);
             RegresarCommand = new RelayCommand(Regresar);
@@ -74,6 +72,7 @@ namespace ProyectoRefaccionaria2.ViewModels
         private void VerAgregarMarcas()
         {
             Vista = "VerAgregarMarcas";
+            
             Actualizar();
         }
 
@@ -86,10 +85,13 @@ namespace ProyectoRefaccionaria2.ViewModels
                 if (Vista == "VerEditarMarca" && Marca!=null)
                 {
                     catalogomarcas.Update(Marca);
+                    Vista = "";
+                    Actualizar();
                 }
                 else if (Vista =="VerAgregarMarcas"&& Marca!=null)
                 {
-                    catalogomarcas.Create(Marca);                 
+                    catalogomarcas.Create(Marca);
+                    Vista = "";
                 }
                 
                 ActualizarBD();
@@ -108,12 +110,6 @@ namespace ProyectoRefaccionaria2.ViewModels
             Vista = "VerEditarMarcas";
             Actualizar();
         }
-
-        private void EditarMarcas()
-        {
-           
-        }
-
         private void VerEliminarMarcas(Marcas marca)
         {
             Marca = marca;
@@ -134,7 +130,7 @@ namespace ProyectoRefaccionaria2.ViewModels
         //y regrese a la vista anterior
         private void Regresar()
         {
-            Vista = "VerMarcas";
+            Vista = "";
             catalogomarcas.Reload(Marca);
             Actualizar();
         }

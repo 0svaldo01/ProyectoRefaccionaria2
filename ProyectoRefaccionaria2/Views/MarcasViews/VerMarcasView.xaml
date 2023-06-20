@@ -27,7 +27,7 @@
                         <StackPanel>
                                 <Button Content="Eliminar" Command="{Binding Path=DataContext.VerEliminarMarcasCommand,
                                 RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
-                                <Button Content="Editar" Command="{Binding Path=DataContext.EditarMarcasCommand,
+                                <Button Content="Editar" Command="{Binding Path=DataContext.VerEditarMarcasCommand,
                                     RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
                             </StackPanel>
                         </DockPanel>

@@ -29,22 +29,18 @@ namespace ProyectoRefaccionaria2.ViewModels
         public Rolesusuarios? rol { get; set; }
         public string Error { get; set; }
         public string Vista { get; set; }
-        public ICommand VerUsuariosCommand { get; set; }
         public ICommand VerAgregarCommand { get; set; }
         public ICommand AgregarUsuarioCommand {  get; set; }
         public ICommand VerEditarUsuarioCommand { get; set; }
-        public ICommand EditarUsuariosCommand { get; set; }
         public ICommand VerEliminarUsuariosCommand { get; set; }
         public ICommand EliminarUsuariosCommand { get; set; }
         public ICommand RegresarCommand { get; set; }
 
         public UsuariosViewModel()
         {
-            VerUsuariosCommand = new RelayCommand(VerUsuarios);
             VerAgregarCommand = new RelayCommand(VerAgregarUsuarios);
             AgregarUsuarioCommand = new RelayCommand(AgregarUsuario);
             VerEditarUsuarioCommand = new RelayCommand<Usuarios>(VerEditarUsuarios);
-            EditarUsuariosCommand = new RelayCommand(EditarUsuarios);
             VerEliminarUsuariosCommand = new RelayCommand<Usuarios>(VerEliminarUsuarios);
             EliminarUsuariosCommand = new RelayCommand(EliminarUsuarios);
 
@@ -59,10 +55,12 @@ namespace ProyectoRefaccionaria2.ViewModels
             if(Vista == "VerAgregarUsuarios" && Usuario!= null) 
             {
                 catalogousuarios.Create(Usuario);
+                Vista = "";
             }
             if(Vista== "VerEditarUsuarios" && Usuario != null) 
             {
                 catalogousuarios.Update(Usuario);
+                Vista = "";
             }
             ActualizarBD();
         }
@@ -92,23 +90,12 @@ namespace ProyectoRefaccionaria2.ViewModels
             Vista = "VerEditarUsuarios";
             Actualizar();
         }
-        private void EditarUsuarios()
-        {
-            throw new NotImplementedException();
-        }
-
         private void Regresar()
         {
             Vista = "VerUsuarios";
             catalogousuarios.Recargar(Usuario);
             Actualizar();
         }
- 
-        private void VerUsuarios()
-        {
-            throw new NotImplementedException();
-        }
-
         private void Actualizar(string? propiedad = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propiedad));
