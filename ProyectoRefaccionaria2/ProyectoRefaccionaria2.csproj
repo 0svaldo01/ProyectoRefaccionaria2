@@ -15,6 +15,7 @@
     <None Remove="Assets\EliminarProductoPub.jpg" />
     <None Remove="Assets\EliminarUsuario.png" />
     <None Remove="Assets\FondoAgregar.jpg" />
+    <None Remove="Assets\fondoPrincipal.jpg" />
     <None Remove="Assets\Marca.png" />
     <None Remove="Assets\notas.png" />
     <None Remove="Assets\Productos.png" />
@@ -37,6 +38,7 @@
     <Resource Include="Assets\EliminarProductoPub.jpg" />
     <Resource Include="Assets\EliminarUsuario.png" />
     <Resource Include="Assets\FondoAgregar.jpg" />
+    <Resource Include="Assets\fondoPrincipal.jpg" />
     <Resource Include="Assets\Marca.png" />
     <Resource Include="Assets\notas.png" />
     <Resource Include="Assets\Productos.png" />

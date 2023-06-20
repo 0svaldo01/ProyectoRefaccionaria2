@@ -50,7 +50,7 @@
         </Border>
         <Border DockPanel.Dock="Left" Background="#e3dddd"  Width="170" Margin="0,10,0,30" Height="300"
                 CornerRadius="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image Source="\Assets\fondoPrincipal.jpg" Stretch="Fill" Margin="-20,-269,-53,113" RenderTransformOrigin="0.584,-0.212" />
+            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="\Assets\fondoPrincipal.jpg" Stretch="Fill" Margin="-20,-269,-53,113" RenderTransformOrigin="0.584,-0.212" />
 
         </Border>
         <TextBlock Margin="0,-50,0,0" HorizontalAlignment="Left">

@@ -59,7 +59,7 @@ public partial class RefaccionariaContext : DbContext
 
             entity.ToTable("productos");
 
-            entity.HasIndex(e => e.IdMarcaP, "IdMarcaP");
+            entity.HasIndex(e => e.IdMarcaP, "productos_ibfk_1");
 
             entity.Property(e => e.Descripcion).HasColumnType("text");
             entity.Property(e => e.Nombre).HasMaxLength(50);
@@ -67,6 +67,7 @@ public partial class RefaccionariaContext : DbContext
 
             entity.HasOne(d => d.IdMarcaPNavigation).WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdMarcaP)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("productos_ibfk_1");
         });
 
