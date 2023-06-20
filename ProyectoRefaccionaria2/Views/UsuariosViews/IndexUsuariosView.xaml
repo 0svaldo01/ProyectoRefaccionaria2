@@ -10,7 +10,6 @@
         <ContentControl.Resources>
             <local:VerUsuariosView x:Key="VerUsuarios"/>
             <local:LoginView x:Key="VerLogin"/>
-            <local:EditarUsuarioView x:Key="VerEditar"/>
             <local:RegistrarUsuariosView x:Key="VerRegistrar"/>
             <local:EliminarUsuarioView x:Key="VerEliminar"/>
         </ContentControl.Resources>

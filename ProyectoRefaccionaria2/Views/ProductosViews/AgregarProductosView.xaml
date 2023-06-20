@@ -21,8 +21,8 @@
 
                 </StackPanel.Resources>
 
-                <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Nombre:</TextBlock>
-                <TextBox Text="{Binding Producto.Nombre}" >
+                <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Descripción:</TextBlock>
+                <TextBox Text="{Binding Producto.Descripcion}" >
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -39,8 +39,8 @@
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
-                <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Descripcion:</TextBlock>
-                <TextBox Text="{Binding Producto.Descripcion}"  BorderThickness="1" >
+                <TextBlock FontSize="15" Foreground="Black" FontWeight="DemiBold">Nombre:</TextBlock>
+                <TextBox Text="{Binding Producto.Nombre}"  BorderThickness="1" >
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"></Setter>

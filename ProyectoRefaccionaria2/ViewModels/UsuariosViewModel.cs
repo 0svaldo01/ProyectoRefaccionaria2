@@ -67,6 +67,7 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void VerAgregarUsuarios()
         {
+            Usuario = new();
             Vista = "VerAgregarUsuarios";
             Actualizar();
         }

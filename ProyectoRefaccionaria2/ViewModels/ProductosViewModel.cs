@@ -31,6 +31,7 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         #region commands
         public ICommand VerProductosCommand { get; set; }
+        public ICommand AgregarProductoCommand { get; set; }
         public ICommand VerAgregarProductosCommand { get; set; }
         public ICommand EditarProductoCommand { get; set; }
         public ICommand VerEliminarProductosCommand { get; set; }
@@ -41,6 +42,7 @@ namespace ProyectoRefaccionaria2.ViewModels
         {
             VerProductosCommand = new RelayCommand(VerProductos);
             VerAgregarProductosCommand = new RelayCommand(VerAgregarProductos);
+            AgregarProductoCommand = new RelayCommand(AgregarProducto);
             EditarProductoCommand = new RelayCommand<Productos>(EditarProductos);
             VerEliminarProductosCommand = new RelayCommand<Productos>(VerEliminarProductos);
             EliminarProductosCommand = new RelayCommand(EliminarProductos);
@@ -61,11 +63,13 @@ namespace ProyectoRefaccionaria2.ViewModels
             {
                 if (Vista == "VerEditarProductos")
                 {
-                    catalogoproductos.Update(Producto);  
+                    catalogoproductos.Update(Producto);
+                    Vista = "";
                 }
                 else if (Vista == "VerAgregarProductos")
                 {
                     catalogoproductos.Create(Producto);
+                    Vista = "";       
                 }
                 ActualizarBD();
             }
@@ -83,6 +87,7 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void VerAgregarProductos()
         {
+            Producto = new();
             Vista = "VerAgregarProductos";
             Actualizar();
         }
@@ -104,6 +109,7 @@ namespace ProyectoRefaccionaria2.ViewModels
         private void EliminarProductos()
         {
             catalogoproductos.Delete(Producto);
+            Vista = "";
             ActualizarBD();
         }
 

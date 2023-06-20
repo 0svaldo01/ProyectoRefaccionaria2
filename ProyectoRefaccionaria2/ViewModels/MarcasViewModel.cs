@@ -71,8 +71,8 @@ namespace ProyectoRefaccionaria2.ViewModels
 
         private void VerAgregarMarcas()
         {
-            Vista = "VerAgregarMarcas";
-            
+            Marca = new();
+            Vista = "VerAgregarMarcas";          
             Actualizar();
         }
 
@@ -82,11 +82,10 @@ namespace ProyectoRefaccionaria2.ViewModels
 
             if(resultado == string.Empty)
             {
-                if (Vista == "VerEditarMarca" && Marca!=null)
+                if (Vista == "VerEditarMarcas" && Marca!=null)
                 {
                     catalogomarcas.Update(Marca);
                     Vista = "";
-                    Actualizar();
                 }
                 else if (Vista =="VerAgregarMarcas"&& Marca!=null)
                 {
