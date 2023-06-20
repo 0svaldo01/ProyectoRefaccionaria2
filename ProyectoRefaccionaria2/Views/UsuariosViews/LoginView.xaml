@@ -7,36 +7,39 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Margin="0" Background="#e3dddd">
+
         <!--Modifique el textblock para que estuviera centrada la leyenda "Iniciar Sesión"-->
-        <TextBlock Margin="0,0,0,50"
+
+        <TextBlock Margin="150,0,0,50"
                    FontSize="40"
                    HorizontalAlignment="Center"
                    FontWeight="Bold" FontStyle="Italic" >
             Iniciar sesión</TextBlock>
-        <Label>Correo electrónico:</Label>
-        <TextBox Text="{Binding usuario.Correo}">
-        </TextBox>
-        <Label>Contraseña:</Label>
-        <TextBox Visibility="Collapsed"
+        <StackPanel Margin="230,0,70,0">
+            <Label>Correo electrónico:</Label>
+            <TextBox Text="{Binding usuario.Correo}">
+            </TextBox>
+            <Label>Contraseña:</Label>
+            <TextBox Visibility="Collapsed"
                  Name="txtPassword" 
                  Text="{}" >
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"></Setter>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <TextBox Text="{Binding usuario.Contraseña}"  Name="pwb1"/>
-        <!--<PasswordBox Name="pwb1" 
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"></Setter>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox Text="{Binding usuario.Contraseña}"  Name="pwb1" TextChanged="pwb1_TextChanged_1"/>
+            <!--<PasswordBox Name="pwb1" 
                      LostFocus="pwb1_LostFocus">-->
-
+        </StackPanel>
         <TextBlock Margin="10"
                    Text="{Binding Error}"
                    Foreground="Red" 
                    HorizontalAlignment="Center">
         </TextBlock>
 
-        <Border Margin="0,0,30,0" Background="#e05206" Height="30" CornerRadius="10" Width="90">
+        <Border Margin="170,0,30,0" Background="#e05206" Height="30" CornerRadius="10" Width="90">
             <Button Command="{Binding IniciarSesionCommand}" 
                     Background="Transparent" 
                     BorderThickness="0" 
@@ -45,8 +48,13 @@
                     Height="30"
                     VerticalAlignment="Top">Iniciar Sesión</Button>
         </Border>
+        <Border DockPanel.Dock="Left" Background="#e3dddd"  Width="170" Margin="0,10,0,30" Height="300"
+                CornerRadius="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Image Source="\Assets\fondoPrincipal.jpg" Stretch="Fill" Margin="-20,-269,-53,113" RenderTransformOrigin="0.584,-0.212" />
 
+        </Border>
         <TextBlock Margin="0,-50,0,0" HorizontalAlignment="Left">
         </TextBlock>
+
     </StackPanel>
 </UserControl>

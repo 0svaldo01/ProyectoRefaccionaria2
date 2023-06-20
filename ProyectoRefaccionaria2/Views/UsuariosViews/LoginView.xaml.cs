@@ -24,5 +24,17 @@ namespace ProyectoRefaccionaria2.Views.UsuariosViews
         {
             InitializeComponent();
         }
+
+        private void pwb1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void pwb1_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            txtPassword.Clear();
+            txtPassword.Text = "";
+            
+        }
     }
 }
