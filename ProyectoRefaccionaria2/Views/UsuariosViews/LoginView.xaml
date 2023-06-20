@@ -46,14 +46,7 @@
                     VerticalAlignment="Top">Iniciar Sesión</Button>
         </Border>
 
-        <TextBlock HorizontalAlignment="Right" Margin="0,100,15,0"
-                    Foreground="blue">
-            <Hyperlink Command="{Binding VerAgregarCommand}" Foreground="Blue">
-                Registrar Usuario
-            </Hyperlink>
-        </TextBlock>
         <TextBlock Margin="0,-50,0,0" HorizontalAlignment="Left">
-
         </TextBlock>
     </StackPanel>
 </UserControl>

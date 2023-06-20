@@ -28,8 +28,9 @@
                             </StackPanel>
                             <StackPanel>
                                 <Button Content="Eliminar" Command="{Binding Path=DataContext.VerEliminarProductosCommand,
-                                    RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
-                                
+                                        RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        CommandParameter="{Binding .}"/>
+
                                 <Button Content="Editar" Command="{Binding Path=DataContext.EditarProductoCommand, 
                                     RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
                             </StackPanel>

@@ -57,8 +57,9 @@ namespace ProyectoRefaccionaria2.ViewModels
         }
         private void CerrarSesion() 
         {
+            usuario = new();
             IsLogged = "VerLoggin";
-
+            Error = "";
             Actualizar();
         }
 

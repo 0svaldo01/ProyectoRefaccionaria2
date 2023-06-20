@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ProyectoRefaccionaria2.Views.UsuariosViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
+    <DockPanel Background="#B7BAC3">
             <WrapPanel  HorizontalAlignment="Center" DockPanel.Dock="Top" Orientation="Horizontal">
             <Border Margin="0,0,30,0" Background="#e05206" Height="40" CornerRadius="10" Width="110">
                 <Button Background="Transparent" Command="{Binding VerAgregarCommand}"

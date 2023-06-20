@@ -12,7 +12,7 @@
         <Grid>
             <StackPanel  Margin="10,10,10,10" Background="#e3dddd">
                 <Separator Background="#df4f11"></Separator>
-                <Label Content="CREA TU CUENTA" Foreground="Black" FontSize="25" FontWeight="Bold" FontStyle="Italic"  HorizontalAlignment="Center"/>
+                <Label Content="Cuenta:" Foreground="Black" FontSize="25" FontWeight="Bold" FontStyle="Italic"  HorizontalAlignment="Center"/>
                 <Separator Background="#df4f11" ></Separator>
                 <Label Content="Nombre" Foreground="Black" />
                 <TextBox Text="{Binding Usuario.Nombre}"  BorderBrush="Black" Background="Transparent"  FontSize="18" >

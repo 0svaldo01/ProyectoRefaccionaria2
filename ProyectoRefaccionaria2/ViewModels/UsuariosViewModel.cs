@@ -11,6 +11,8 @@ using GalaSoft.MvvmLight.Command;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Printing;
+using ProyectoRefaccionaria2.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoRefaccionaria2.ViewModels
 {
@@ -26,6 +28,8 @@ namespace ProyectoRefaccionaria2.ViewModels
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; }= new ObservableCollection<Usuarios>();
         public ObservableCollection<Rolesusuarios> ListaRolesUsuarios { get; set; } = new ObservableCollection<Rolesusuarios>();
         public Usuarios? Usuario { get; set; } = new Usuarios();
+        
+        ValidarUsuarios Validador = new ValidarUsuarios();
         public Rolesusuarios? rol { get; set; }
         public string Error { get; set; }
         public string Vista { get; set; }
@@ -52,17 +56,26 @@ namespace ProyectoRefaccionaria2.ViewModels
         }
         private void AgregarUsuario()
         {
-            if(Vista == "VerAgregarUsuarios" && Usuario!= null) 
+            var resultado = Validador.Validar(Usuario);
+            if (resultado == string.Empty)
             {
-                catalogousuarios.Create(Usuario);
-                Vista = "";
+                if (Vista == "VerAgregarUsuarios" && Usuario != null)
+                {
+                    catalogousuarios.Create(Usuario);
+                    Vista = "";
+                }
+                if (Vista == "VerEditarUsuarios" && Usuario != null)
+                {
+                    catalogousuarios.Update(Usuario);
+                    Vista = "";
+                }
+                ActualizarBD();
             }
-            if(Vista== "VerEditarUsuarios" && Usuario != null) 
+            else
             {
-                catalogousuarios.Update(Usuario);
-                Vista = "";
+                Error = resultado;
+                Actualizar();
             }
-            ActualizarBD();
         }
 
         private void VerAgregarUsuarios()
