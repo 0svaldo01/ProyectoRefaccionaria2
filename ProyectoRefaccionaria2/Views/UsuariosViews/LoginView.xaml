@@ -48,7 +48,7 @@
 
         <TextBlock HorizontalAlignment="Right" Margin="0,100,15,0"
                     Foreground="blue">
-            <Hyperlink Command="{Binding}" Foreground="Blue">
+            <Hyperlink Command="{Binding VerAgregarCommand}" Foreground="Blue">
                 Registrar Usuario
             </Hyperlink>
         </TextBlock>
